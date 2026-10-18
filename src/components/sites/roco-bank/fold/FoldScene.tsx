@@ -5,6 +5,7 @@ import { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useSta
 import type { FoldEngine } from "@/lib/roco-bank/fold/engine";
 import type { WalletScreen } from "@/lib/roco-bank/fold/screens";
 import { ACTIVE_LINE } from "@/lib/roco-bank/scroll-map";
+import { subscribeViewport, viewportSize } from "@/lib/roco-bank/viewport";
 
 import { ProcessColumn } from "./ProcessColumn";
 import styles from "./fold.module.css";
@@ -26,7 +27,11 @@ const smoothstep = (a: number, b: number, v: number) => {
   return u * u * (3 - 2 * u);
 };
 
+// Apple's iPhone Duo AR model (same asset as jadon7/iphone-duo), committed as a meshopt GLB so
+// deploys have it; rebuild with `npm run assets:iphone-duo -- --force` (macOS + Windows). The
+// flattened USDC that step leaves next to it (gitignored) is the local fallback (≈1.7 s parse).
 const MODEL_URL = "/sites/roco-bank/iphone-duo/iPhone_Duo.glb";
+const MODEL_FALLBACK_URL = "/sites/roco-bank/iphone-duo/iPhone_Duo_Render.usdc";
 /** never compete with the hero intro: start after it (≈3.4 s) in idle time, or earlier on demand */
 const WARM_AFTER_MS = 3600;
 const PAY_DURATION = 2.6; // s, click-to-pay: Pay press → Face ID → green check
@@ -74,12 +79,13 @@ export const FoldScene = forwardRef<FoldSceneHandle, Props>(function FoldScene({
   const payRef = useRef<{ start: number; from: number; chimed: boolean } | null>(null);
   const activeRef = useRef(-2);
   const [status, setStatus] = useState<"idle" | "loading" | "ready" | "error">("idle");
+  const [loadError, setLoadError] = useState("");
 
   /** process time from the column: active card index + progress through it (-1 before the first) */
   const processTime = useCallback((processPx: number) => {
     const col = columnRef.current;
     if (!col) return -1;
-    const vh = window.innerHeight;
+    const vh = viewportSize().h;
     const top = vh - processPx;
     col.style.transform = `translate3d(0, ${top.toFixed(1)}px, 0)`;
     const steps = col.querySelectorAll<HTMLElement>("[data-step]");
@@ -172,7 +178,8 @@ export const FoldScene = forwardRef<FoldSceneHandle, Props>(function FoldScene({
 
   useEffect(() => {
     sizeRef.current = { contentW, contentH };
-    engineRef.current?.resize(window.innerWidth, window.innerHeight, contentW, contentH);
+    const vp = viewportSize();
+    engineRef.current?.resize(vp.w, vp.h, contentW, contentH);
   }, [contentW, contentH]);
 
   useEffect(() => {
@@ -185,18 +192,27 @@ export const FoldScene = forwardRef<FoldSceneHandle, Props>(function FoldScene({
       if (started || cancelled) return;
       started = true;
       setStatus("loading");
+      let engine: FoldEngine | null = null;
       try {
         const [{ FoldEngine }, screens] = await Promise.all([import("@/lib/roco-bank/fold/engine"), import("@/lib/roco-bank/fold/screens")]);
         const inner = document.createElement("canvas");
         const outer = document.createElement("canvas");
         const wallet = new screens.WalletScreen(outer);
-        // inner texture at the device-pixel size the bento is shown at (crisp text at the hand-off)
+        // inner texture at the device-pixel size the bento is shown at (crisp text at the hand-off);
+        // DPR is 2 on Retina MacBooks, 1 / 1.25 / 1.5 on typical Windows displays
         const res = Math.min(2.4, Math.max(1, (sizeRef.current.contentH * Math.min(window.devicePixelRatio, 2)) / 1125));
         await Promise.all([screens.drawInnerScreen(inner, res), wallet.load()]);
         if (cancelled) return;
-        const engine = new FoldEngine(host, inner, outer);
-        engine.resize(window.innerWidth, window.innerHeight, sizeRef.current.contentW, sizeRef.current.contentH);
-        await engine.load(MODEL_URL);
+        engine = new FoldEngine(host, inner, outer);
+        const vp = viewportSize();
+        engine.resize(vp.w, vp.h, sizeRef.current.contentW, sizeRef.current.contentH);
+        try {
+          await engine.load(MODEL_URL);
+        } catch (glbError) {
+          if (!(await fetch(MODEL_FALLBACK_URL, { method: "HEAD" }).then((r) => r.ok, () => false))) throw glbError;
+          console.warn("iPhone_Duo.glb unavailable, loading the USDC fallback", glbError);
+          await engine.load(MODEL_FALLBACK_URL);
+        }
         if (cancelled) {
           engine.dispose();
           return;
@@ -215,8 +231,13 @@ export const FoldScene = forwardRef<FoldSceneHandle, Props>(function FoldScene({
         setStatus("ready");
         document.documentElement.dataset.foldReady = "true";
       } catch (err) {
-        console.error("fold scene failed to load", err);
-        if (!cancelled) setStatus("error");
+        console.error(`fold scene failed to load — missing model? run \`npm run assets:iphone-duo\``, err);
+        // release the WebGL context and its canvas (the bento stays as the DOM version)
+        if (engine && engineRef.current !== engine) engine.dispose();
+        if (!cancelled) {
+          setStatus("error");
+          setLoadError(err instanceof Error ? err.message : String(err));
+        }
       }
     };
     warmRef.current = () => void begin();
@@ -224,13 +245,15 @@ export const FoldScene = forwardRef<FoldSceneHandle, Props>(function FoldScene({
     const timer = window.setTimeout(() => {
       idleId = ric(() => void begin(), { timeout: 1500 });
     }, WARM_AFTER_MS);
-    const onResize = () => engineRef.current?.resize(window.innerWidth, window.innerHeight, sizeRef.current.contentW, sizeRef.current.contentH);
-    window.addEventListener("resize", onResize);
+    const unsubscribe = subscribeViewport(() => {
+      const vp = viewportSize();
+      engineRef.current?.resize(vp.w, vp.h, sizeRef.current.contentW, sizeRef.current.contentH);
+    });
     return () => {
       cancelled = true;
       window.clearTimeout(timer);
       if (idleId && window.cancelIdleCallback) window.cancelIdleCallback(idleId);
-      window.removeEventListener("resize", onResize);
+      unsubscribe();
       engineRef.current?.dispose();
       engineRef.current = null;
     };
@@ -245,6 +268,11 @@ export const FoldScene = forwardRef<FoldSceneHandle, Props>(function FoldScene({
       <section className={styles.process} id="duo" aria-label="Apple Pay process">
         <ProcessColumn ref={columnRef} onPay={onPay} />
       </section>
+      {status === "error" && process.env.NODE_ENV !== "production" ? (
+        <p className={styles.devError} role="status">
+          iPhone Duo model failed to load ({loadError}). Run <code>npm run assets:iphone-duo</code>, then reload.
+        </p>
+      ) : null}
     </div>
   );
 });

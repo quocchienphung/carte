@@ -231,10 +231,17 @@ export class FoldEngine {
       };
     };
     this.screens = { inner: make("inner", inner), outer: make("outer", outer) };
+    // GPU resets (driver update / TDR on Windows, GPU switching on dual-GPU laptops) drop the
+    // context; three.js restores its state, the canvas screens just need re-uploading
+    this.renderer.domElement.addEventListener("webglcontextrestored", this.onContextRestored);
   }
 
-  /** loads the meshopt/WebP GLB converted from Apple's USD (scripts/assets/usd_to_glb.mjs) —
-   *  parsing the USDC directly blocked the main thread for ~1.7 s */
+  private onContextRestored = () => {
+    this.refreshScreens();
+  };
+
+  /** loads the GLB converted from Apple's USD (scripts/assets/usd_to_glb.mjs; meshopt/quantized
+   *  GLBs work too) — parsing the USDC directly blocked the main thread for ~1.7 s */
   async load(url: string) {
     let model: THREE.Object3D;
     if (url.endsWith(".glb")) {
@@ -368,6 +375,9 @@ export class FoldEngine {
   resize(w: number, h: number, contentW: number, contentH: number) {
     this.size = { w, h };
     this.contentPx = { w: contentW, h: contentH };
+    // DPR changes when the window moves between displays (Retina ↔ 100 / 125 / 150 % Windows scaling)
+    const dpr = Math.min(window.devicePixelRatio, 2);
+    if (this.renderer.getPixelRatio() !== dpr) this.renderer.setPixelRatio(dpr);
     this.renderer.setSize(w, h, false);
     this.renderer.domElement.style.width = `${w}px`;
     this.renderer.domElement.style.height = `${h}px`;
@@ -451,6 +461,7 @@ export class FoldEngine {
   }
 
   dispose() {
+    this.renderer.domElement.removeEventListener("webglcontextrestored", this.onContextRestored);
     this.renderer.dispose();
     this.renderer.domElement.remove();
     this.scene.traverse((o) => {

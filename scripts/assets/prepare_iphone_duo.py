@@ -3,7 +3,9 @@
 Adapted from jadon7/iphone-duo `scripts/prepare-assets.py` (MIT). The model and textures belong
 to Apple and are NOT part of this repository (output dir is gitignored); their use is subject to
 Apple's terms — local demo use only.
-Usage: .venv-tools/bin/python -I scripts/assets/prepare_iphone_duo.py
+Usually run through `npm run assets:iphone-duo` (macOS + Windows), which also converts to GLB.
+Direct use: .venv-tools/bin/python -I scripts/assets/prepare_iphone_duo.py           (macOS/Linux)
+            .venv-tools\\Scripts\\python.exe -I scripts\\assets\\prepare_iphone_duo.py  (Windows)
 """
 from pathlib import Path
 from urllib.request import urlretrieve

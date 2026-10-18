@@ -1,7 +1,20 @@
 node_modules
 
-# Apple iPhone Duo reference model (downloaded by scripts/assets/prepare_iphone_duo.py; Apple terms)
-/public/sites/roco-bank/iphone-duo/
+# Apple iPhone Duo reference model (Apple terms). Only the compressed GLB the page loads is committed
+# (so deploys have it); the USDC + textures `npm run assets:iphone-duo` leaves beside it are not.
+/public/sites/roco-bank/iphone-duo/*
+!/public/sites/roco-bank/iphone-duo/iPhone_Duo.glb
 .venv-tools/
 .next/
 artifacts/visual-audit/*/compare/
+
+# Local Roco Bank references and generated visual-audit output.
+# Keep application assets in public/sites/roco-bank tracked (except the model above).
+/artifacts/visual-audit/
+/references/
+/docs/research/roco-bank/
+/docs/ROCO_BANK_GEMINI_MASTER_PROMPTS.md
+/docs/ROCO_BANK_REFERENCE_KEYFRAMES.jpg
+/docs/readdd.txt
+/docs/roco-bank-reference.mp4
+/docs/video_contact_sheet.jpg

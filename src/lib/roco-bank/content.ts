@@ -52,13 +52,13 @@ export const PARTNERS = [
 export type PartnerId = (typeof PARTNERS)[number];
 
 /** Hero stack, top → bottom (slot ids are the measured motion tracks of the reference cards).
- *  Faces: user-supplied bank card images (docs/research/roco-bank/source-cards), prepared by
- *  scripts/assets/prepare_bank_cards.py. Third-party bank/Visa marks — demo use only. */
+ *  Faces: polished 1595×986 card textures; preserve their native detail without image recompression.
+ *  Third-party bank/Visa marks — demo use only. */
 export const CARD_ART: Record<CardId, { face: string; label: string }> = {
-  orange: { face: "/sites/roco-bank/cards/vietcombank.webp", label: "Vietcombank Priority Visa Signature card" },
-  green: { face: "/sites/roco-bank/cards/techcombank.webp", label: "Techcombank Priority Visa Signature card" },
-  black: { face: "/sites/roco-bank/cards/vib.webp", label: "VIB One Visa Signature card" },
-  brown: { face: "/sites/roco-bank/cards/vietinbank.webp", label: "VietinBank Visa Signature card" },
+  orange: { face: "/sites/roco-bank/cards/vietcombank.webp?v=polished-2", label: "Vietcombank Priority Visa Signature card" },
+  green: { face: "/sites/roco-bank/cards/techcombank.webp?v=polished-2", label: "Techcombank Priority Visa Signature card" },
+  black: { face: "/sites/roco-bank/cards/vib.webp?v=polished-2", label: "VIB One Visa Signature card" },
+  brown: { face: "/sites/roco-bank/cards/vietinbank.webp?v=polished-2", label: "VietinBank Visa Signature card" },
 };
 
 export type TileText =

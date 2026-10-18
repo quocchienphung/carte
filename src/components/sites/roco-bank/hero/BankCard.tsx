@@ -25,8 +25,8 @@ export function BankCard({ id, layout = "stage" }: { id: CardId; layout?: "stage
         className={styles.face}
         src={art.face}
         alt=""
-        width={440}
-        height={272}
+        width={1595}
+        height={986}
         unoptimized
         loading="eager"
         decoding="sync"

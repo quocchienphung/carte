@@ -27,7 +27,9 @@
     "node": ">=24"
   },
   "scripts": {
+    "predev": "node scripts/assets/check-iphone-duo.mjs",
     "dev": "next dev",
+    "assets:iphone-duo": "node scripts/assets/iphone-duo.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",

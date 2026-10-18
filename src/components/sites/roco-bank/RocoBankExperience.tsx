@@ -8,6 +8,7 @@ import { groupProgressInteractive } from "@/lib/roco-bank/motion/bento";
 import { evaluate, REPLAY_DURATION } from "@/lib/roco-bank/motion/timeline";
 
 import { anchors, mapScroll, scrollLength, type AnchorId } from "@/lib/roco-bank/scroll-map";
+import { subscribeViewport, viewportSize } from "@/lib/roco-bank/viewport";
 
 import { BentoScene } from "./bento/BentoScene";
 import { FoldScene, type FoldSceneHandle } from "./fold/FoldScene";
@@ -61,23 +62,28 @@ function readMode(): Mode {
 }
 const noSubscribe = () => () => undefined;
 
-const subscribeResize = (cb: () => void) => {
-  window.addEventListener("resize", cb);
-  return () => window.removeEventListener("resize", cb);
-};
-
 /** stage scale that fits 1600×1200 into the viewport (exactly 1 at the reference capture) */
 function useStageScale() {
   return useSyncExternalStore(
-    subscribeResize,
-    () => Math.min(window.innerWidth / 1600, window.innerHeight / 1200),
+    subscribeViewport,
+    () => {
+      const vp = viewportSize();
+      return Math.min(vp.w / 1600, vp.h / 1200);
+    },
     () => 1,
   );
 }
 
-/** viewport size as a stable string snapshot ("w×h") */
+/** viewport size (scrollbars excluded, see viewport.ts) as a stable string snapshot ("w×h") */
 function useViewportKey() {
-  return useSyncExternalStore(subscribeResize, () => `${window.innerWidth}x${window.innerHeight}`, () => "1440x1024");
+  return useSyncExternalStore(
+    subscribeViewport,
+    () => {
+      const vp = viewportSize();
+      return `${vp.w}x${vp.h}`;
+    },
+    () => "1440x1024",
+  );
 }
 
 function useWideEnough() {
@@ -252,14 +258,14 @@ export function RocoBankExperience() {
   }, []);
 
   const scrollToFeatures = useCallback(() => {
-    window.scrollTo({ top: anchors(window.innerHeight).explore, behavior: "smooth" });
+    window.scrollTo({ top: anchors(viewportSize().h).explore, behavior: "smooth" });
   }, []);
   const navItems = useMemo(
     () =>
       (["home", "explore", "about", "contact"] as AnchorId[]).map((id) => ({
         id,
         label: id[0].toUpperCase() + id.slice(1),
-        onSelect: () => window.scrollTo({ top: anchors(window.innerHeight)[id], behavior: "smooth" }),
+        onSelect: () => window.scrollTo({ top: anchors(viewportSize().h)[id], behavior: "smooth" }),
       })),
     [],
   );

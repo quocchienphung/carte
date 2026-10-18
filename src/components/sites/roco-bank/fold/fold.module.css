@@ -81,3 +81,24 @@
 .root[data-visible="true"][data-settled="true"] .process > * {
   pointer-events: auto;
 }
+
+/* dev only: the device would otherwise just be missing (model not built on this machine) */
+.devError {
+  position: absolute;
+  left: 50%;
+  top: 24px;
+  z-index: 2;
+  max-width: min(720px, calc(100% - 32px));
+  margin: 0;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: #b42318;
+  color: #fff;
+  font: 500 13px/1.45 ui-monospace, Menlo, Consolas, monospace;
+  transform: translateX(-50%);
+  pointer-events: auto;
+}
+
+.devError code {
+  font-weight: 700;
+}
