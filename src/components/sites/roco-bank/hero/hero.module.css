@@ -10,39 +10,6 @@
   will-change: transform;
 }
 
-/* ---------------------------------------------------------------- decorative vertical type */
-.deco {
-  position: absolute;
-  left: 1367px; /* baseline (glyph bottoms) at stage x 1447 */
-  top: 0;
-  width: 0;
-  height: 1024px;
-  pointer-events: none;
-}
-
-.decoInner {
-  position: absolute;
-  left: 0;
-  top: 0;
-  transform-origin: 0 0;
-  transform: translate(0, 1065px) rotate(-90deg) translate(0, -0.78em);
-  font-family: var(--roco-font-sans);
-  font-size: 134px;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1;
-  white-space: nowrap;
-}
-
-.decoOutline {
-  color: transparent;
-  -webkit-text-stroke: 1.4px #ececec;
-}
-
-.decoSolid {
-  color: var(--roco-deco);
-}
-
 /* ---------------------------------------------------------------- arrows */
 .arrows {
   position: absolute;
@@ -216,54 +183,6 @@
   color: var(--roco-ink-soft);
 }
 
-/* ---------------------------------------------------------------- CTAs */
-.actions {
-  position: absolute;
-  left: 96px;
-  top: 788px;
-  display: flex;
-  gap: 8px;
-}
-
-.cta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 132px;
-  height: 32px;
-  border-radius: var(--roco-pill-radius);
-  font-family: var(--roco-font-sans);
-  font-size: 11.6px;
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  text-decoration: none;
-  will-change: transform, opacity, filter;
-  transition: background-color 160ms ease;
-}
-
-.cta_solid {
-  background: #000;
-  color: #fff;
-}
-
-.cta_soft {
-  background: var(--roco-cta-soft);
-  color: #000;
-}
-
-.cta_solid:hover {
-  background: #2a2a2a;
-}
-
-.cta_soft:hover {
-  background: #e3e3e3;
-}
-
-.cta:focus-visible {
-  outline: 2px solid #f39a45;
-  outline-offset: 3px;
-}
-
 /* ---------------------------------------------------------------- divider + partners */
 .divider {
   position: absolute;
@@ -298,84 +217,4 @@
   align-items: center;
   justify-content: center;
   will-change: transform;
-}
-
-/* ---------------------------------------------------------------- social proof pills */
-.proof {
-  position: absolute;
-  inset: 0;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  pointer-events: none;
-}
-
-.pill {
-  position: absolute;
-  height: 56px;
-  border-radius: var(--roco-pill-radius);
-  pointer-events: auto;
-  will-change: transform, opacity, filter;
-}
-
-.pill_walentyna { left: 1022px; top: 768px; width: 248px; }
-.pill_slawomira { left: 905px; top: 841px; width: 237px; }
-.pill_haleema { left: 1149px; top: 841px; width: 236px; }
-.pill_patrick { left: 946px; top: 913px; width: 220px; }
-.pill_brandon { left: 1172px; top: 913px; width: 172px; }
-
-.tone_neutral {
-  background: var(--roco-soft-pill);
-  color: var(--roco-ink-2);
-}
-
-.tone_orange {
-  background: linear-gradient(90deg, var(--roco-orange-a), var(--roco-orange-b));
-  color: #fff;
-}
-
-.tone_green {
-  background: linear-gradient(90deg, var(--roco-green-a), var(--roco-green-b));
-  color: #fff;
-}
-
-.avatar {
-  position: absolute;
-  left: 8px;
-  top: 8px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-}
-
-.pillName {
-  position: absolute;
-  left: 60px;
-  top: 12px;
-  font-family: var(--roco-font-sans);
-  font-size: 16.1px;
-  font-weight: 440;
-  letter-spacing: 0.012em;
-  line-height: 18px;
-  white-space: nowrap;
-}
-
-.pillAmount {
-  position: absolute;
-  left: 60px;
-  top: 30.6px;
-  font-family: var(--roco-font-mono);
-  font-size: 12.64px; /* digit height 9 px (DM Mono 0.712 em) */
-  letter-spacing: -0.015em;
-  line-height: 14px;
-  white-space: nowrap;
-}
-
-.tone_neutral .pillAmount {
-  color: var(--roco-amount);
-}
-
-.tone_orange .pillAmount,
-.tone_green .pillAmount {
-  color: rgba(255, 255, 255, 0.86);
 }

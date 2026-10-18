@@ -11,22 +11,11 @@
   /* ---- colour */
   --roco-white: #ffffff; /* hero canvas */
   --roco-ink: #000000; /* headline / CTA fill, min luminance 0 */
-  --roco-ink-2: #1d1d1d; /* pill names */
   --roco-ink-mid: #555555; /* paragraph line 3 (darkest-1 % luma 73) */
   --roco-ink-soft: #8a8a8a; /* paragraph line 4 (darkest-1 % luma 141) */
-  --roco-amount: #8c8c8c; /* mono amounts in neutral pills */
   --roco-night: #111111; /* bento canvas (17,17,17) */
-  --roco-soft-pill: #f6f6f6; /* neutral pills (246) */
-  --roco-cta-soft: #efefef; /* DISCOVER (239) */
   --roco-divider: #f5f5f5; /* f085 y=955 */
   --roco-partner: #a3a3a3; /* darkest partner ink (163–171) */
-  --roco-deco: #f6f6f6; /* vertical "Personal + Business" */
-  --roco-orange-a: #fbab5c; /* Walentyna pill gradient start (251,171,92) */
-  --roco-orange-b: #f7b471;
-  --roco-green-a: #8fa872; /* Brandon pill gradient (~152,175,122) */
-  --roco-green-b: #a6bb8b;
-  --roco-wallet-border: #e2e2e2;
-  --roco-wallet-border-dark: #3a3a3a;
 
   /* ---- type (Albert Sans chosen by glyph-correlation forensics; DM Mono approximates the amounts) */
   --roco-font-sans: var(--font-albert), "Albert Sans", "Helvetica Neue", Arial, sans-serif;
@@ -46,7 +35,6 @@
   /* ---- shape */
   --roco-card-radius: 16px; /* ISO card corner 3.18 mm / 85.6 mm × 440 px */
   --roco-tile-radius: 20px;
-  --roco-pill-radius: 999px;
 
   /* ---- shadow (tuned against the rest frames) */
   --roco-card-shadow: -18px 34px 54px rgba(0, 0, 0, 0.16), -4px 8px 16px rgba(0, 0, 0, 0.08);

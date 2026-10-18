@@ -1,11 +1,8 @@
 "use client";
 
-import { NAV } from "@/lib/roco-bank/content";
-
 import { LogoMark } from "../brand/LogoMark";
 import { Wordmark } from "../brand/Wordmark";
 import { useAnim } from "../motion-context";
-import { PillNavButton } from "./PillNavButton";
 import styles from "./navigation.module.css";
 
 type Props = {
@@ -32,18 +29,6 @@ export function SiteHeader({ theme, decorative = false, layout = "stage" }: Prop
           <LogoMark className={styles.mark} size={40} />
           <Wordmark className={styles.word} />
         </a>
-        <nav className={styles.nav} aria-label="Account">
-          {NAV.map((n) => (
-            <PillNavButton
-              key={n.id}
-              label={n.label}
-              href={n.href}
-              variant={n.variant}
-              theme={theme}
-              tabIndex={decorative ? -1 : undefined}
-            />
-          ))}
-        </nav>
       </header>
     </div>
   );

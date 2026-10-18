@@ -1,13 +1,8 @@
-import type { CardId, PillId, TileId } from "./geometry";
+import type { CardId, TileId } from "./geometry";
 
 // Copy transcribed from the reference video (VIDEO_FORENSICS.md §5). Keep presentation out of here.
 
 export const BRAND = { name: "Roco.bank", nameLead: "Roco", nameTail: ".bank" } as const;
-
-export const NAV = [
-  { id: "wallet", label: "Wallet", href: "#wallet", variant: "outline" },
-  { id: "register", label: "Register", href: "#register", variant: "solid" },
-] as const;
 
 export const HERO_COPY = {
   eyebrow: "CREATE YOUR OWN",
@@ -25,24 +20,9 @@ export const HERO_COPY = {
     { text: "Digital Payments, This Card Is The Perfect Companion For Your Fast-Paced", tone: "mid" },
     { text: "Lifestyle With Modern Tools, Contactless Payments.", tone: "soft" },
   ],
-  ctas: [
-    { id: "buy", label: "BUY CARD", href: "#buy-card", variant: "solid" },
-    { id: "discover", label: "DISCOVER", href: "#discover", variant: "soft" },
-  ],
-  deco: { lead: "Personal", plus: "+", tail: "Business" },
 } as const;
 
 export type HeadlineWord = (typeof HERO_COPY.headline)[number];
-
-export const PILL_CONTENT: Record<PillId, { name: string; amount: string; tone: "orange" | "neutral" | "green" }> = {
-  walentyna: { name: "Walentyna Wiśniewska", amount: "$32,100.00", tone: "orange" },
-  slawomira: { name: "Sławomira Kozłowska", amount: "$6,899.00", tone: "neutral" },
-  haleema: { name: "Haleema Sirin Antoun", amount: "$68,899.00", tone: "neutral" },
-  patrick: { name: "Patrick Frederiksen", amount: "$29,000.00", tone: "neutral" },
-  brandon: { name: "Brandon Hall", amount: "$17,250.00", tone: "green" },
-};
-
-export const PILL_ORDER: PillId[] = ["walentyna", "slawomira", "haleema", "patrick", "brandon"];
 
 /** Partner marquee, left → right as observed (third-party marks, approximated as simplified wordmarks). */
 export const PARTNERS = [

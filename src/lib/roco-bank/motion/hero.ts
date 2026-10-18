@@ -1,5 +1,4 @@
-import { PILL_ORDER, PARTNERS } from "../content";
-import type { PillId } from "../geometry";
+import { PARTNERS } from "../content";
 import { clamp01, cubicBezier, decay, powerOut, progress } from "./easing";
 import { marquee, zoom } from "./measured";
 
@@ -18,7 +17,7 @@ export const pageZoom = (t: number) => {
 
 export type Entrance = { dy: number; opacity: number; blur: number };
 
-/** Header group (logo + nav): rise 44.7 px, start .217 s, 1.344 s, power 3.82; opacity power 3 over 1.4 s. */
+/** Header logo: rise 44.7 px, start .217 s, 1.344 s, power 3.82; opacity power 3 over 1.4 s. */
 export const headerEntrance = (t: number): Entrance => ({
   dy: decay(t, 0.217, 1.344, 3.82, 44.7),
   opacity: progress(t, 0.22, 1.4, powerOut(3)),
@@ -70,11 +69,7 @@ const RISE: Record<string, RiseSpec> = {
   para2: { a: 38.5, start: 0.681, dur: 0.93, pow: 2.6, blur: 3, blurDur: 0.42, opDur: 0.45, opPow: 1.2 },
   para3: { a: 34.5, start: 0.961, dur: 0.98, pow: 3.22, blur: 3, blurDur: 0.37, opDur: 0.45, opPow: 1.2 },
   para4: { a: 27.5, start: 1.227, dur: 0.77, pow: 2.26, blur: 2, blurDur: 0.34, opDur: 0.45, opPow: 1.2 },
-  ctaBuy: { a: 51.7, start: 0.695, dur: 1.14, pow: 2.47, blur: 8, blurDur: 0.5, opDur: 1.0, opPow: 1.5 },
-  // inferred from the first blurred DISCOVER frame (f032): BUY CARD + 0.27 s
-  ctaDiscover: { a: 51.7, start: 0.965, dur: 1.14, pow: 2.47, blur: 8, blurDur: 0.5, opDur: 1.0, opPow: 1.5 },
 };
-const PILL_START: Record<PillId, number> = { walentyna: 0.708, slawomira: 0.814, haleema: 0.92, patrick: 1.02, brandon: 1.13 };
 
 const rise = (t: number, s: RiseSpec): Entrance => ({
   dy: decay(t, s.start, s.dur, s.pow, s.a),
@@ -83,18 +78,6 @@ const rise = (t: number, s: RiseSpec): Entrance => ({
 });
 
 export const paragraphLine = (t: number, i: number) => rise(t, RISE[`para${i + 1}`]);
-export const ctaEntrance = (t: number, id: "buy" | "discover") => rise(t, id === "buy" ? RISE.ctaBuy : RISE.ctaDiscover);
-
-export const pillEntrance = (t: number, id: PillId): Entrance => {
-  const s = PILL_START[id];
-  const u = clamp01((t - s) / 1.65);
-  return {
-    dy: decay(t, s, 1.65, 5.5, 78),
-    opacity: progress(t, s, 1.0, powerOut(2.2)),
-    blur: 10 * Math.pow(Math.max(0, 1 - u / 0.27), 2),
-  };
-};
-export const PILLS_IN_ORDER = PILL_ORDER;
 
 /** divider draws left → right: scaleX power-2.5 out, start 1.05 s, 1.05 s */
 export const dividerScale = (t: number) => progress(t, 1.05, 1.05, powerOut(2.5));

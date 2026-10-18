@@ -2,16 +2,14 @@
 
 import Image from "next/image";
 
-import { HERO_COPY, NAV, PARTNERS, PILL_CONTENT, PILL_ORDER, TILES } from "@/lib/roco-bank/content";
+import { HERO_COPY, PARTNERS, TILES } from "@/lib/roco-bank/content";
 import { CARD_STACK, type TileId } from "@/lib/roco-bank/geometry";
 
 import { LogoMark } from "../brand/LogoMark";
 import { Wordmark } from "../brand/Wordmark";
 import { BankCard } from "../hero/BankCard";
-import { AvatarBadge } from "../hero/AvatarBadge";
 import { PARTNER_MARKS } from "../hero/partner-logos";
 import { MorphNav } from "../navigation/MorphNav";
-import { PillNavButton } from "../navigation/PillNavButton";
 import styles from "./responsive.module.css";
 
 const TILE_ORDER: TileId[] = ["credit", "customers", "trust", "ai", "easy", "payment", "invested"];
@@ -28,11 +26,6 @@ export function ResponsiveSite() {
             <LogoMark size={32} />
             <Wordmark />
           </a>
-          <nav className={styles.nav} aria-label="Account">
-            {NAV.map((n) => (
-              <PillNavButton key={n.id} label={n.label} href={n.href} variant={n.variant} theme="light" />
-            ))}
-          </nav>
         </header>
 
         <main id="top">
@@ -55,28 +48,7 @@ export function ResponsiveSite() {
                 </span>
               </h1>
               <p className={styles.paragraph}>{HERO_COPY.paragraph.map((l) => l.text).join(" ")}</p>
-              <div className={styles.actions}>
-                {HERO_COPY.ctas.map((c) => (
-                  <a key={c.id} href={c.href} className={`${styles.cta} ${styles[c.variant]}`}>
-                    {c.label}
-                  </a>
-                ))}
-              </div>
             </div>
-            <ul className={styles.pills} aria-label="Recent card holders">
-              {PILL_ORDER.map((id) => {
-                const p = PILL_CONTENT[id];
-                return (
-                  <li key={id} className={`${styles.pill} ${styles[p.tone]}`}>
-                    <AvatarBadge id={id} name={p.name} />
-                    <span>
-                      <span className={styles.pillName}>{p.name}</span>
-                      <span className={styles.pillAmount}>{p.amount}</span>
-                    </span>
-                  </li>
-                );
-              })}
-            </ul>
             <div className={styles.partners} aria-label="Trusted by" role="list">
               <div className={styles.partnerTrack}>
                 {[...PARTNERS, ...PARTNERS].map((id, i) => {

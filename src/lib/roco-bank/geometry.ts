@@ -18,8 +18,6 @@ export const toCanvas = (r: Rect): Rect => ({ x: r.x - CANVAS.x, y: r.y - CANVAS
 export const HEADER = {
   logoMark: { x: 138, y: 137, w: 36, h: 40 },
   wordmark: { x: 191, capTop: 150, baseline: 164 },
-  wallet: { x: 1260, y: 136, w: 91, h: 40 },
-  register: { x: 1359, y: 136, w: 105, h: 40 },
 } as const;
 
 // ---------------------------------------------------------------- hero (canvas px)
@@ -29,22 +27,9 @@ export const HERO = {
   eyebrow: { x: 96, capTop: 459, width: 200 },
   headline: { x: 96, line1Baseline: 553, line2Baseline: 622 },
   paragraph: { x: 97, firstCapTop: 662, linePitch: 24 },
-  ctaBuy: { x: 96, y: 788, w: 132, h: 32 },
-  ctaDiscover: { x: 236, y: 788, w: 132, h: 32 },
   divider: { x: 96, y: 867, w: 752, h: 2 },
   logoStrip: { x: -20, y: 902, w: 880, h: 50, pitch: 147.5 },
-  decoText: { x: 1275, w: 100 },
 } as const;
-
-export type PillId = "walentyna" | "slawomira" | "haleema" | "patrick" | "brandon";
-/** Social-proof pills (canvas px). */
-export const PILLS: Record<PillId, Rect> = {
-  walentyna: { x: 1022, y: 768, w: 248, h: 56 },
-  slawomira: { x: 905, y: 841, w: 237, h: 56 },
-  haleema: { x: 1149, y: 841, w: 236, h: 56 },
-  patrick: { x: 946, y: 913, w: 220, h: 56 },
-  brandon: { x: 1172, y: 913, w: 172, h: 56 },
-};
 
 // ---------------------------------------------------------------- cards (stage px)
 export const CARD = { w: 440, h: 272, radius: 18 } as const;

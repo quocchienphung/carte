@@ -1,10 +1,9 @@
-import { HERO_COPY, PARTNERS, PILL_ORDER } from "../content";
+import { HERO_COPY, PARTNERS } from "../content";
 import { BENTO_A, CANVAS, CARD, CARD_STACK, TILE_ART, type CardId, type MorphGroup, type TileId } from "../geometry";
 import { CARD_PARALLAX, pageScroll, tileFrame } from "./bento";
 import { cardPose, receivedShadow, SHADOW_PAIRS } from "./cards";
 import {
   arrowsEntrance,
-  ctaEntrance,
   dividerScale,
   eyebrowChar,
   headerEntrance,
@@ -17,7 +16,6 @@ import {
   marqueeItem0,
   pageZoom,
   paragraphLine,
-  pillEntrance,
 } from "./hero";
 
 /** Length of the reference film. */
@@ -29,8 +27,6 @@ export const SEGMENTS = {
   poster: [0, INTRO_START],
   heroCardsEntrance: [INTRO_START, 2.8],
   heroCopyReveal: [INTRO_START, 1.6],
-  ctaReveal: [0.695, 2.1],
-  proofPillsReveal: [0.708, 2.8],
   logoStripReveal: [1.05, 2.33],
   sceneTransition: [3.5, 4.991],
   bentoEntrance: [3.586, 5.461],
@@ -118,10 +114,6 @@ export function evaluate(clocks: Clocks): SceneState {
     const e = paragraphLine(h, i);
     s[`para.${i}`] = { transform: ty(e.dy), opacity: r2(e.opacity), filter: blurF(e.blur) };
   });
-  for (const id of ["buy", "discover"] as const) {
-    const e = ctaEntrance(h, id);
-    s[`cta.${id}`] = { transform: ty(e.dy), opacity: r2(e.opacity), filter: blurF(e.blur) };
-  }
   s.divider = { transform: `scaleX(${dividerScale(h).toFixed(4)})` };
   s.logoStrip = { opacity: r2(logoStripOpacity(h)) };
   const x0 = marqueeItem0(rested ? 0 : marqueeT);
@@ -132,10 +124,6 @@ export function evaluate(clocks: Clocks): SceneState {
     if (x >= MARQUEE_LOOP - 2 * MARQUEE_PITCH) x -= MARQUEE_LOOP;
     s[`partner.${i}`] = { transform: `translate3d(${r2(x - MARQUEE_PITCH / 2)}px, 0, 0)` };
   });
-  for (const id of PILL_ORDER) {
-    const e = pillEntrance(h, id);
-    s[`pill.${id}`] = { transform: ty(e.dy), opacity: r2(e.opacity), filter: blurF(e.blur) };
-  }
 
   // --------------------------------------------------------------- hero cards (stage px)
   const poses = Object.fromEntries(CARD_STACK.map((id) => [id, cardPose(id, heroT)])) as Record<CardId, ReturnType<typeof cardPose>>;

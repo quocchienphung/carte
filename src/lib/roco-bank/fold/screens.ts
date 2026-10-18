@@ -128,15 +128,6 @@ export async function drawInnerScreen(canvas: HTMLCanvasElement, res = 1) {
   // header (dark theme)
   logoMark(ctx, 56.05, 49.12, 40, "#fff");
   text(ctx, [{ text: "Roco.bank", weight: 520 }], 110.05, 59.62, 20.4, 0.016, "#fff");
-  roundRect(ctx, 1180.5, 48.5, 90, 39, 19.5);
-  ctx.strokeStyle = "#3a3a3a";
-  ctx.lineWidth = 1;
-  ctx.stroke();
-  text(ctx, [{ text: "Wallet", weight: 400 }], 1225.5, 60.6, 15.2, -0.01, "#fff", "center");
-  roundRect(ctx, 1279, 48, 105, 40, 20);
-  ctx.fillStyle = "#fff";
-  ctx.fill();
-  text(ctx, [{ text: "Register", weight: 400 }], 1331.5, 60.6, 15.2, -0.01, "#000", "center");
   // tiles
   for (const id of ids) {
     // yield between tiles so building the texture never blocks a frame for long
