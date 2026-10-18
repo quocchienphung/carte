@@ -2,7 +2,7 @@ import params from "../logo-params.json";
 
 type Props = { size?: number; className?: string; title?: string };
 
-/** Roco.bank pinwheel mark — six tangentially offset bars, geometry least-squares fitted to the
+/** Carte pinwheel mark (kept from the first build) — six tangentially offset bars, geometry least-squares fitted to the
  *  header logo of the reference (scripts/assets/fit_logo.py, rms 0.042). */
 export function LogoMark({ size = 40, className, title }: Props) {
   const L = params.bar_length;

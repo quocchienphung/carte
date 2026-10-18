@@ -1,0 +1,114 @@
+{
+  "observedDate": "2026-10-18",
+  "count": 9,
+  "checks": [
+    {
+      "name": "decision-inbox",
+      "url": "https://www.affectui.com/r/decision-inbox.json",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/decision-inbox/decision-inbox.tsx",
+          "type": "registry:ui",
+          "bytes": 10994
+        }
+      ]
+    },
+    {
+      "name": "enrichment-orbit",
+      "url": "https://www.affectui.com/r/enrichment-orbit.json",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "illustrations/enrichment-orbit/enrichment-orbit.tsx",
+          "type": "registry:block",
+          "bytes": 9026
+        }
+      ]
+    },
+    {
+      "name": "integration-beam",
+      "url": "https://www.affectui.com/r/integration-beam.json",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "illustrations/integration-beam/integration-beam.tsx",
+          "type": "registry:block",
+          "bytes": 32652
+        }
+      ]
+    },
+    {
+      "name": "layer-stack",
+      "url": "https://www.affectui.com/r/layer-stack.json",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "illustrations/layer-stack/layer-stack.tsx",
+          "type": "registry:block",
+          "bytes": 12387
+        }
+      ]
+    },
+    {
+      "name": "notification-stack",
+      "url": "https://www.affectui.com/r/notification-stack.json",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/notification-stack/notification-stack.tsx",
+          "type": "registry:ui",
+          "bytes": 12106
+        }
+      ]
+    },
+    {
+      "name": "otp-input",
+      "url": "https://www.affectui.com/r/otp-input.json",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/otp-input/otp-input.tsx",
+          "type": "registry:ui",
+          "bytes": 27501
+        }
+      ]
+    },
+    {
+      "name": "progress-tracker",
+      "url": "https://www.affectui.com/r/progress-tracker.json",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/progress-tracker/progress-tracker.tsx",
+          "type": "registry:ui",
+          "bytes": 10894
+        }
+      ]
+    },
+    {
+      "name": "segmented-control",
+      "url": "https://www.affectui.com/r/segmented-control.json",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/segmented-control/segmented-control.tsx",
+          "type": "registry:ui",
+          "bytes": 22577
+        }
+      ]
+    },
+    {
+      "name": "tool-call-card",
+      "url": "https://www.affectui.com/r/tool-call-card.json",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/tool-call-card/tool-call-card.tsx",
+          "type": "registry:ui",
+          "bytes": 29042
+        }
+      ]
+    }
+  ]
+}

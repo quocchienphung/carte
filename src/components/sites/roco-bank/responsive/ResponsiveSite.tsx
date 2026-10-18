@@ -1,14 +1,14 @@
 "use client";
 
-import Image from "next/image";
-
-import { HERO_COPY, PARTNERS, TILES } from "@/lib/roco-bank/content";
+import { BRAND, CAPABILITIES, HERO_COPY } from "@/lib/roco-bank/content";
 import { CARD_STACK, type TileId } from "@/lib/roco-bank/geometry";
 
+import { SecurityScope } from "../../carte/security/parts";
+import { BENTO_SCENES } from "../../carte/security/scenes";
 import { LogoMark } from "../brand/LogoMark";
 import { Wordmark } from "../brand/Wordmark";
 import { BankCard } from "../hero/BankCard";
-import { PARTNER_MARKS } from "../hero/partner-logos";
+import { CapabilityMark } from "../hero/capability-marks";
 import { MorphNav } from "../navigation/MorphNav";
 import styles from "./responsive.module.css";
 
@@ -22,7 +22,7 @@ export function ResponsiveSite() {
     <div className={styles.page}>
       <div className={styles.canvas}>
         <header className={styles.header}>
-          <a className={styles.brand} href="#top" aria-label="Roco.bank home">
+          <a className={styles.brand} href="#top" aria-label={`${BRAND.name} home`}>
             <LogoMark size={32} />
             <Wordmark />
           </a>
@@ -30,7 +30,7 @@ export function ResponsiveSite() {
 
         <main id="top">
           <section className={styles.hero} aria-labelledby="hero-title-r">
-            <div className={styles.cards} aria-label="Roco.bank card designs" role="group">
+            <div className={styles.cards} aria-label="Demo card designs" role="group">
               {[...CARD_STACK].map((id, i) => (
                 <div key={id} className={styles.cardSlot} data-i={i}>
                   <BankCard id={id} layout="flow" />
@@ -40,58 +40,44 @@ export function ResponsiveSite() {
             <div className={styles.copy}>
               <p className={styles.eyebrow}>{HERO_COPY.eyebrow}</p>
               <h1 id="hero-title-r" className={styles.headline}>
-                <span>
-                  <b>Roco</b>.bank
-                </span>{" "}
-                <span>
-                  Professional <b>bank</b> card
-                </span>
+                {([1, 2] as const).map((n) => (
+                  <span key={n}>
+                    {HERO_COPY.headline
+                      .filter((w) => w.line === n)
+                      .map((w, i, arr) => (
+                        <span key={w.text}>
+                          {w.weight === "medium" ? <b>{w.text}</b> : w.text}
+                          {i < arr.length - 1 ? " " : null}
+                        </span>
+                      ))}{" "}
+                  </span>
+                ))}
               </h1>
               <p className={styles.paragraph}>{HERO_COPY.paragraph.map((l) => l.text).join(" ")}</p>
             </div>
-            <div className={styles.partners} aria-label="Trusted by" role="list">
+            <div className={styles.partners} aria-label="What the Carte demo covers" role="list">
               <div className={styles.partnerTrack}>
-                {[...PARTNERS, ...PARTNERS].map((id, i) => {
-                  const m = PARTNER_MARKS[id];
-                  return (
-                    <div key={i} className={styles.partner} role="listitem" aria-hidden={i >= PARTNERS.length || undefined}>
-                      <svg viewBox={`0 0 ${m.w} 22`} width={m.w} height={22} fill="currentColor" role="img" aria-label={m.title}>
-                        {m.body}
-                      </svg>
-                    </div>
-                  );
-                })}
+                {[...CAPABILITIES, ...CAPABILITIES].map((c, i) => (
+                  <div key={i} className={styles.partner} role="listitem" aria-hidden={i >= CAPABILITIES.length || undefined}>
+                    <CapabilityMark id={c.id} label={c.label} />
+                  </div>
+                ))}
               </div>
             </div>
           </section>
 
-          <section className={styles.bento} aria-label="Features" id="features">
+          <section className={styles.bento} aria-labelledby="features-title-r" id="features">
+            <h2 id="features-title-r" className={styles.srOnly}>
+              How {BRAND.name} keeps your cards in your hands
+            </h2>
             {TILE_ORDER.map((id) => {
-              const t = TILES[id];
+              const Scene = BENTO_SCENES[id];
               return (
-                <a key={id} href={t.href} className={`${styles.tile} ${styles[`t_${id}`]}`} aria-label={t.label}>
-                  <Image
-                    className={styles.tileArt}
-                    src={`/sites/roco-bank/bento/${id}.webp`}
-                    alt=""
-                    fill
-                    sizes="(max-width: 767px) 100vw, 50vw"
-                    unoptimized
-                  />
-                  <span className={styles.tileText} aria-hidden>
-                    {t.text.map((line, i) => (
-                      <span key={i} className={styles[`r_${line.kind}`]}>
-                        {line.kind === "eyebrow"
-                          ? line.text
-                          : line.parts.map((p, j) => (
-                              <span key={j} className={p.weight === "medium" ? styles.medium : undefined}>
-                                {p.text}
-                              </span>
-                            ))}
-                      </span>
-                    ))}
-                  </span>
-                </a>
+                <div key={id} className={`${styles.tile} ${styles[`t_${id}`]}`}>
+                  <SecurityScope className={styles.tileScope}>
+                    <Scene />
+                  </SecurityScope>
+                </div>
               );
             })}
           </section>

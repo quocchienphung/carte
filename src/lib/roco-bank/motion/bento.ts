@@ -49,13 +49,11 @@ export type TileFrame = {
   rect: Rect;
   /** morph progress of the tile's group */
   p: number;
-  /** artwork fade towards the backing colour (0 … 0.5) */
-  dim: number;
   scale: number;
 };
 
 export function tileFrame(id: TileId, t: number, progressOverride?: Partial<Record<MorphGroup, number>>): TileFrame {
   const g = TILE_GROUP[id];
   const p = g ? (progressOverride?.[g] ?? groupProgress(g, t)) : 0;
-  return { rect: lerpRect(BENTO_A[id], BENTO_B[id], p), p, dim: g ? 0.5 * clamp01(p) : 0, scale: tileScale(id, t) };
+  return { rect: lerpRect(BENTO_A[id], BENTO_B[id], p), p, scale: tileScale(id, t) };
 }

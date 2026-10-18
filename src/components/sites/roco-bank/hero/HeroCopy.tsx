@@ -14,7 +14,7 @@ export function HeroCopy() {
   const line = (n: 1 | 2) => words.map((w, i) => ({ w, i })).filter(({ w }) => w.line === n);
   return (
     <div className={styles.copy}>
-      <p className={styles.eyebrow} aria-label="Create your own">
+      <p className={styles.eyebrow} aria-label={HERO_COPY.eyebrow.toLowerCase()}>
         {[...HERO_COPY.eyebrow].map((ch, i) => (
           <span key={i} ref={anim(`eyebrow.${i}`)} aria-hidden className={styles.eyebrowChar}>
             {ch === " " ? " " : ch}

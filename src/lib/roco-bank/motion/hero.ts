@@ -1,4 +1,4 @@
-import { PARTNERS } from "../content";
+import { CAPABILITIES } from "../content";
 import { clamp01, cubicBezier, decay, powerOut, progress } from "./easing";
 import { marquee, zoom } from "./measured";
 
@@ -32,9 +32,13 @@ export const arrowsEntrance = (t: number) => ({
 // ---------------------------------------------------------------- eyebrow typewriter
 /** Reveal frame of every character of "CREATE YOUR OWN" (spaces included), measured f002…f032. */
 const EYEBROW_FRAMES = [2, 4, 6, 8, 10, 12, 14, 16, 19, 21, 23, 25, 27, 30, 32];
+/** reveal frame of character i; longer eyebrows ("CREDIT CARD SECURITY") continue the measured
+ *  ~2-frame cadence past the 15 measured characters */
+const eyebrowFrame = (i: number) =>
+  i < EYEBROW_FRAMES.length ? EYEBROW_FRAMES[i] : EYEBROW_FRAMES[EYEBROW_FRAMES.length - 1] + 2 * (i - EYEBROW_FRAMES.length + 1);
 /** opacity of character i: 0.5 on its reveal frame (soft new glyph), 1 one frame later */
 export const eyebrowChar = (t: number, i: number) => {
-  const tr = EYEBROW_FRAMES[i] / 30;
+  const tr = eyebrowFrame(i) / 30;
   if (t < tr - 0.5 / 30) return { opacity: 0, blur: 0 };
   const p = clamp01((t - (tr - 0.5 / 30)) / (1.5 / 30));
   return { opacity: 0.35 + 0.65 * p, blur: (1 - p) * 1.2 };
@@ -86,7 +90,7 @@ export const logoStripOpacity = (t: number) => clamp01((t - 1.05) / 1.28);
 
 // ---------------------------------------------------------------- partner marquee
 export const MARQUEE_PITCH = 147.5;
-export const MARQUEE_LOOP = MARQUEE_PITCH * PARTNERS.length;
+export const MARQUEE_LOOP = MARQUEE_PITCH * CAPABILITIES.length;
 /** cumulative rightward travel (px): base speed + decaying boost (rms 2.2 px) */
 const travel = (t: number) => marquee.c_px_per_s * t + marquee.A_px * (1 - Math.exp(-marquee.k_per_s * (t - 1.1)));
 /** x (canvas px) of item 0's slot centre; item i sits at base + i·pitch (mod loop). Calibrated so

@@ -11,7 +11,7 @@ import styles from "./cards.module.css";
 export function HeroCards() {
   const anim = useAnim();
   return (
-    <div ref={anim("cardsLayer")} className={styles.layer} aria-label="Roco.bank card designs" role="group">
+    <div ref={anim("cardsLayer")} className={styles.layer} aria-label="Demo card designs" role="group">
       {CARD_STACK.map((id) => (
         <BankCard key={id} id={id} />
       ))}

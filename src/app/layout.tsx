@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Albert_Sans, DM_Mono, JetBrains_Mono, Schibsted_Grotesk } from "next/font/google";
+import { META } from "@/lib/roco-bank/content";
+
 import "./globals.css";
 
 // Albert Sans: closest licensed (OFL) match to the reference headline/body type by rendered-glyph
@@ -22,9 +24,8 @@ const schibsted = Schibsted_Grotesk({ variable: "--font-schibsted", subsets: ["l
 const jetbrains = JetBrains_Mono({ variable: "--font-jetbrains", subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
-  title: "Roco.bank — Professional bank card",
-  description:
-    "Roco.bank introduces a bank card crafted for professionals who demand excellence — real-time controls, secure digital payments and contactless pay.",
+  title: META.title,
+  description: META.description,
 };
 
 export const viewport: Viewport = {

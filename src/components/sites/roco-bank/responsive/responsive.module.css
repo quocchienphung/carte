@@ -82,7 +82,7 @@
   line-height: 1.08;
 }
 
-.headline span {
+.headline > span {
   display: block;
 }
 
@@ -137,47 +137,35 @@
 
 .tile {
   position: relative;
-  display: block;
-  min-height: 180px;
+  height: 280px;
   border-radius: 20px;
-  overflow: hidden;
-  color: #fff;
-  text-decoration: none;
   box-shadow: var(--roco-tile-shadow);
+  color: #fff;
 }
 
-.tileArt {
-  object-fit: cover;
-}
-
-.t_trust { min-height: 320px; }
-.t_customers { min-height: 220px; }
-
-.tileText {
+.tileScope {
   position: absolute;
-  left: 28px;
-  right: 28px;
-  top: 28px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+  inset: 0;
+  border-radius: inherit;
 }
 
-.t_ai .tileText,
-.t_easy .tileText,
-.t_credit .tileText {
-  top: 50%;
-  transform: translateY(-50%);
-}
+/* heights sized to each Carte scene (they lay out in their own size container) */
+.t_credit { height: 300px; }
+.t_trust { height: 520px; }
+.t_customers { height: 580px; }
+.t_ai,
+.t_easy { height: 180px; }
+.t_payment,
+.t_invested { height: 280px; }
 
-.t_ai .tileText {
-  align-items: center;
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
-
-.r_eyebrow { font-size: 12px; letter-spacing: 0.36em; opacity: 0.82; }
-.r_title { font-size: 38px; font-weight: var(--roco-weight-light); letter-spacing: -0.045em; line-height: 1; }
-.r_sub { font-size: 26px; font-weight: var(--roco-weight-light); letter-spacing: -0.035em; line-height: 1.1; }
-.medium { font-weight: var(--roco-weight-medium); }
 
 @media (min-width: 768px) {
   .page { padding: 24px; }
@@ -192,8 +180,8 @@
   .copy { grid-column: 1; grid-row: 1; }
   .cards { grid-column: 2; grid-row: 1; height: 340px; width: 100%; }
   .partners { grid-column: 1 / -1; }
-  .bento { grid-template-columns: 1fr 1fr; padding: 40px; }
-  .t_customers, .t_trust { grid-column: span 2; }
+  .bento { grid-template-columns: 1fr 1fr; grid-auto-flow: dense; align-items: start; padding: 40px; }
+  .t_customers { grid-column: span 2; height: 340px; }
 }
 
 @keyframes rise {

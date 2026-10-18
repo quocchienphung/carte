@@ -1,0 +1,199 @@
+/* Carte security UI — tokens and shared parts for the seven bento scenes and the demo panels.
+   Scoped to `.scope` (a dark surface): Affect UI components inside switch to their dark tokens through
+   data-theme="dark" on the same element, and take the site's type instead of their own Inter. */
+
+.scope {
+  --c-ink: #f4f4f5;
+  --c-text: rgba(255, 255, 255, 0.74);
+  --c-muted: rgba(255, 255, 255, 0.52);
+  --c-faint: rgba(255, 255, 255, 0.32);
+  --c-line: rgba(255, 255, 255, 0.09);
+  --c-surface: #18181a;
+  --c-surface-2: #222225;
+  --c-surface-3: #2a2a2e;
+  --c-accent: #6d8bff;
+  --c-accent-soft: rgba(109, 139, 255, 0.16);
+  --c-ok: #3fbf74;
+  --c-ok-soft: rgba(63, 191, 116, 0.14);
+  --c-warn: #fb8a3c;
+  --c-warn-soft: rgba(251, 138, 60, 0.14);
+  --c-frost: #9fd4ff;
+  --c-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  color: var(--c-ink);
+  font-family: var(--roco-font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* every Affect UI part (class prefix ui-) uses the site's Albert Sans */
+.scope :global([class^="ui-"]),
+.scope :global([class*=" ui-"]) {
+  font-family: var(--roco-font-sans);
+}
+
+/* ---------------------------------------------------------------- tile shell */
+.tile {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  background:
+    radial-gradient(120% 90% at 100% 0%, rgba(109, 139, 255, 0.07), transparent 60%),
+    linear-gradient(180deg, #1b1b1e 0%, #141416 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+  container-type: size;
+}
+
+.tileInner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 22px 24px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 14px;
+  letter-spacing: 0.26em;
+  color: var(--c-muted);
+  white-space: nowrap;
+}
+
+.title {
+  margin: 0;
+  font-size: 25px;
+  font-weight: 330;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  color: var(--c-ink);
+  text-wrap: balance;
+}
+
+.title b {
+  font-weight: 500;
+}
+
+.body {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 19px;
+  color: var(--c-text);
+}
+
+.demoLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  line-height: 14px;
+  color: var(--c-faint);
+  white-space: nowrap;
+}
+
+.demoLabel::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--c-accent);
+}
+
+/* ---------------------------------------------------------------- buttons (Affect UI Button sizes) */
+.btn {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 30px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 9px;
+  background: var(--c-surface-3);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1), 0 1px 2px rgba(0, 0, 0, 0.4);
+  color: var(--c-ink);
+  font: 500 13px/20px var(--roco-font-sans);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 160ms ease, transform 160ms ease, opacity 160ms ease;
+}
+
+.btn:hover {
+  background: #313135;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.btnPrimary {
+  background: linear-gradient(#f4f4f5, #e4e4e7);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.6), 0 2px 4px rgba(0, 0, 0, 0.3), inset 0 1px 0 #fff;
+  color: #121213;
+}
+
+.btnPrimary:hover {
+  background: linear-gradient(#fff, #ececef);
+}
+
+.btnGhost {
+  background: transparent;
+  box-shadow: none;
+  color: var(--c-muted);
+}
+
+.btnGhost:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--c-ink);
+}
+
+.scope button:focus-visible,
+.scope a:focus-visible,
+.scope [role="radio"]:focus-visible,
+.scope [role="tab"]:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 2px;
+}
+
+.glyph {
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
+  }
+}

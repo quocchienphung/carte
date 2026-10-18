@@ -1,5 +1,5 @@
-import { HERO_COPY, PARTNERS } from "../content";
-import { BENTO_A, CANVAS, CARD, CARD_STACK, TILE_ART, type CardId, type MorphGroup, type TileId } from "../geometry";
+import { CAPABILITIES, HERO_COPY } from "../content";
+import { BENTO_A, CANVAS, CARD, CARD_STACK, type CardId, type MorphGroup, type TileId } from "../geometry";
 import { CARD_PARALLAX, pageScroll, tileFrame } from "./bento";
 import { cardPose, receivedShadow, SHADOW_PAIRS } from "./cards";
 import {
@@ -117,7 +117,7 @@ export function evaluate(clocks: Clocks): SceneState {
   s.divider = { transform: `scaleX(${dividerScale(h).toFixed(4)})` };
   s.logoStrip = { opacity: r2(logoStripOpacity(h)) };
   const x0 = marqueeItem0(rested ? 0 : marqueeT);
-  PARTNERS.forEach((_, i) => {
+  CAPABILITIES.forEach((_, i) => {
     // slot centres wrap so items re-enter from the left (content travels right)
     let x = (x0 + i * MARQUEE_PITCH) % MARQUEE_LOOP;
     if (x < -2 * MARQUEE_PITCH) x += MARQUEE_LOOP;
@@ -158,11 +158,6 @@ export function evaluate(clocks: Clocks): SceneState {
       transform: scale >= 0.9999 ? "none" : `scale(${scale.toFixed(4)})`,
       visibility: scale > 0.002 ? "visible" : "hidden",
     };
-    const art = TILE_ART[id];
-    s[`tile.${id}.art`] = { transform: `translate3d(${r2(art.x - rect.x)}px, ${r2(art.y - rect.y)}px, 0)` };
-    s[`tile.${id}.dim`] = { opacity: r2(fr.dim) };
-    const shift = id === "credit" ? [0, 98 * fr.p] : id === "payment" ? [-28 * fr.p, 0] : [0, 0];
-    s[`tile.${id}.text`] = { transform: `translate3d(${r2(shift[0])}px, ${r2(shift[1])}px, 0)` };
   });
 
   return s;

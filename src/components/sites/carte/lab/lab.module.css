@@ -1,0 +1,103 @@
+.lab {
+  min-height: 100vh;
+  padding: 32px 40px 80px;
+  background: #0b0b0c;
+  color: #ededed;
+  font-family: var(--roco-font-sans);
+}
+
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 20px;
+  margin-bottom: 28px;
+}
+
+.top h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.top p {
+  margin: 0;
+  color: #8f8f8f;
+  font-size: 14px;
+}
+
+.top button {
+  height: 30px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 9px;
+  background: #2a2a2d;
+  color: #ededed;
+  cursor: pointer;
+}
+
+.pair {
+  margin-bottom: 44px;
+}
+
+.pair h2 {
+  margin: 0 0 12px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #c4c4c4;
+}
+
+.sources {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.light,
+.dark {
+  display: grid;
+  place-items: center;
+  min-height: 160px;
+  padding: 24px;
+  border-radius: 16px;
+}
+
+.light {
+  background: #fafafa;
+  color: #171717;
+}
+
+.dark {
+  background: #111113;
+}
+
+.pair[data-wide] .light,
+.pair[data-wide] .dark {
+  display: block;
+}
+
+.adapters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 24px;
+  border-radius: 16px;
+  background: #111;
+}
+
+.slot {
+  margin: 0;
+}
+
+.slot figcaption {
+  margin-bottom: 8px;
+  font-size: 12px;
+  color: #8f8f8f;
+}
+
+.tileBox {
+  position: relative;
+  border-radius: 20px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.35);
+}

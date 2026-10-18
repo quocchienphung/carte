@@ -1,0 +1,2153 @@
+{
+  "generatedFrom": "affectui-crawl.json",
+  "crawledAt": "2026-10-18T16:47:33.542Z",
+  "counts": {
+    "blocks": {
+      "total": 11,
+      "publicRegistry": 2,
+      "pro": 9,
+      "unknown": 0,
+      "failed": 0
+    },
+    "components": {
+      "total": 52,
+      "publicRegistry": 17,
+      "pro": 35,
+      "unknown": 0,
+      "failed": 0
+    },
+    "illustrations": {
+      "total": 24,
+      "publicRegistry": 17,
+      "pro": 7,
+      "unknown": 0,
+      "failed": 0
+    },
+    "motion": {
+      "total": 8,
+      "publicRegistry": 4,
+      "pro": 4,
+      "unknown": 0,
+      "failed": 0
+    },
+    "screens": {
+      "total": 12,
+      "publicRegistry": 0,
+      "pro": 12,
+      "unknown": 0,
+      "failed": 0
+    }
+  },
+  "selected": 17,
+  "items": [
+    {
+      "id": "agent-gallery",
+      "name": "Agent Gallery",
+      "category": "blocks",
+      "canonicalUrl": "https://www.affectui.com/blocks/agent-gallery",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:45:04.907Z",
+      "previewStatesInspected": [],
+      "sourceStatus": "reference-only",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": "Pro option — not used",
+      "fitReason": "Panel-to-screen layout for a future Control / Verify / Review / Alerts section.",
+      "limitations": "preview inspected; source unavailable.",
+      "destinationFiles": [],
+      "evidencePaths": [
+        "artifacts/visual-audit/carte/source/agent-gallery_idle.png"
+      ]
+    },
+    {
+      "id": "ai-workspace",
+      "name": "AI Workspace",
+      "category": "blocks",
+      "canonicalUrl": "https://www.affectui.com/blocks/ai-workspace",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:45:12.834Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "app-directory",
+      "name": "App Directory",
+      "category": "blocks",
+      "canonicalUrl": "https://www.affectui.com/blocks/app-directory",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:45:15.486Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "client-context",
+      "name": "Client Context",
+      "category": "blocks",
+      "canonicalUrl": "https://www.affectui.com/blocks/client-context",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:45:15.039Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "invoice-credit",
+      "name": "Invoice & Credit Note",
+      "category": "blocks",
+      "canonicalUrl": "https://www.affectui.com/blocks/invoice-credit",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:45:17.681Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "kpi-board",
+      "name": "KPI Board",
+      "category": "blocks",
+      "canonicalUrl": "https://www.affectui.com/blocks/kpi-board",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:45:18.306Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "logo-marquee",
+      "name": "Logo Marquee",
+      "category": "blocks",
+      "canonicalUrl": "https://www.affectui.com/blocks/logo-marquee",
+      "access": "public-registry",
+      "inspectedAt": "2026-10-18T16:45:20.891Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": "https://www.affectui.com/r/logo-marquee.json",
+      "dependencies": [],
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "metrics-dashboard",
+      "name": "Metrics Dashboard",
+      "category": "blocks",
+      "canonicalUrl": "https://www.affectui.com/blocks/metrics-dashboard",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:45:20.466Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "pricing-plans",
+      "name": "Pricing Plans",
+      "category": "blocks",
+      "canonicalUrl": "https://www.affectui.com/blocks/pricing-plans",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:45:23.465Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "task-board",
+      "name": "Task Board",
+      "category": "blocks",
+      "canonicalUrl": "https://www.affectui.com/blocks/task-board",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:45:22.806Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "testimonial-wall",
+      "name": "Testimonial Wall",
+      "category": "blocks",
+      "canonicalUrl": "https://www.affectui.com/blocks/testimonial-wall",
+      "access": "public-registry",
+      "inspectedAt": "2026-10-18T16:45:26.036Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": "https://www.affectui.com/r/testimonial-wall.json",
+      "dependencies": [],
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "agent-inbox",
+      "name": "Agent Inbox",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/agent-inbox",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:45:25.378Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "agent-lanes",
+      "name": "Agent Lanes",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/agent-lanes",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:45:28.577Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "agent-plan",
+      "name": "Agent Plan",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/agent-plan",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:45:27.937Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "agent-steering",
+      "name": "Agent Steering",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/agent-steering",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:45:30.840Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "ai-answer",
+      "name": "AI Answer",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/ai-answer",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:45:31.477Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "approval-card",
+      "name": "Approval Card",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/approval-card",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:45:34.217Z",
+      "previewStatesInspected": [
+        "idle (preview)"
+      ],
+      "sourceStatus": "reference-only",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": "Pro option for step 04 — not used",
+      "fitReason": "Risk badge + approve / deny fits, but Pro source cannot ship in this public repo.",
+      "limitations": "preview inspected; source unavailable — fallback: Decision Inbox (free).",
+      "destinationFiles": [],
+      "evidencePaths": [
+        "artifacts/visual-audit/carte/source/approval-card_idle.png"
+      ]
+    },
+    {
+      "id": "autonomy-dial",
+      "name": "Autonomy Dial",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/autonomy-dial",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:45:33.596Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "billing-schedule",
+      "name": "Billing Schedule",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/billing-schedule",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:45:37.138Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "breakdown-chart",
+      "name": "Breakdown Chart",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/breakdown-chart",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:45:36.423Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "button",
+      "name": "Button",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/button",
+      "access": "public-registry",
+      "inspectedAt": "2026-10-18T16:45:39.435Z",
+      "previewStatesInspected": [
+        "docs read"
+      ],
+      "sourceStatus": "official-source",
+      "registryUrl": "https://www.affectui.com/r/button.json",
+      "dependencies": [],
+      "carteRole": "reference for action buttons (Reset demo, Run check) — styles adapted into security.module.css",
+      "fitReason": "Same primary / secondary / ghost hierarchy as the other Affect UI parts.",
+      "limitations": "Not imported: a 12 KB component for two buttons; its sizes / radii are mirrored in CSS.",
+      "destinationFiles": [
+        "src/components/references/affectui/button.tsx",
+        "src/components/sites/carte/security/security.module.css"
+      ],
+      "evidencePaths": [
+        "artifacts/visual-audit/carte/source/button_idle.png"
+      ]
+    },
+    {
+      "id": "change-summary",
+      "name": "Change Summary",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/change-summary",
+      "access": "public-registry",
+      "inspectedAt": "2026-10-18T16:45:39.935Z",
+      "previewStatesInspected": [
+        "idle"
+      ],
+      "sourceStatus": "official-source",
+      "registryUrl": "https://www.affectui.com/r/change-summary.json",
+      "dependencies": [],
+      "carteRole": "phone cover screen + process column — remote overview of card / alert status",
+      "fitReason": "One metric per row with a toned trend: fits a remote status panel.",
+      "limitations": "Rows are demo state (frozen / active, open reviews, alerts), never invented business metrics.",
+      "destinationFiles": [
+        "src/components/references/affectui/change-summary.tsx",
+        "src/components/sites/carte/security/RemoteStatus.tsx"
+      ],
+      "evidencePaths": [
+        "artifacts/visual-audit/carte/source/change-summary_idle.png"
+      ]
+    },
+    {
+      "id": "chat-composer",
+      "name": "Chat Composer",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/chat-composer",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:45:42.477Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "cited-answer",
+      "name": "Cited Answer",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/cited-answer",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:45:42.063Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "combobox",
+      "name": "Combobox",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/combobox",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:45:44.369Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "command-menu",
+      "name": "Command Menu",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/command-menu",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:45:44.993Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "comment-thread",
+      "name": "Comment Thread",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/comment-thread",
+      "access": "public-registry",
+      "inspectedAt": "2026-10-18T16:45:46.899Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": "https://www.affectui.com/r/comment-thread.json",
+      "dependencies": [],
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "comments-panel",
+      "name": "Comments Panel",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/comments-panel",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:45:47.548Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "compact-breakdown",
+      "name": "Compact Breakdown",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/compact-breakdown",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:45:49.669Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "context-window",
+      "name": "Context Window",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/context-window",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:45:50.090Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "data-table",
+      "name": "Data Table",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/data-table",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:45:52.620Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "date-range-picker",
+      "name": "Date Range Picker",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/date-range-picker",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:45:51.984Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "decision-inbox",
+      "name": "Decision Inbox",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/decision-inbox",
+      "access": "public-registry",
+      "inspectedAt": "2026-10-18T16:45:54.811Z",
+      "previewStatesInspected": [
+        "idle",
+        "primary answered"
+      ],
+      "sourceStatus": "official-source",
+      "registryUrl": "https://www.affectui.com/r/decision-inbox.json",
+      "dependencies": [],
+      "carteRole": "bento payment + phone step 04 — Review before you approve (Recognize / Freeze demo card)",
+      "fitReason": "Two quick answers per decision, confirm then fold away — exactly a payment review.",
+      "limitations": "Forked: one fixed demo transaction, two different outcomes (approved vs card frozen), Reset demo, state from the shared model so the phone matches.",
+      "destinationFiles": [
+        "src/components/references/affectui/decision-inbox.tsx",
+        "src/components/sites/carte/security/PaymentDecisionDemo.tsx"
+      ],
+      "evidencePaths": [
+        "artifacts/visual-audit/carte/source/decision-inbox_idle.png",
+        "artifacts/visual-audit/carte/source/decision-inbox_action.png"
+      ]
+    },
+    {
+      "id": "delegate-board",
+      "name": "Delegate Board",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/delegate-board",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:45:55.265Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "dropzone",
+      "name": "Dropzone",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/dropzone",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:45:57.479Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "email-draft",
+      "name": "Email Draft",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/email-draft",
+      "access": "public-registry",
+      "inspectedAt": "2026-10-18T16:45:58.132Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": "https://www.affectui.com/r/email-draft.json",
+      "dependencies": [],
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "experiment-card",
+      "name": "Experiment Card",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/experiment-card",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:46:00.298Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "filter-menu",
+      "name": "Filter Menu",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/filter-menu",
+      "access": "public-registry",
+      "inspectedAt": "2026-10-18T16:46:00.731Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": "https://www.affectui.com/r/filter-menu.json",
+      "dependencies": [],
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "inline-diff",
+      "name": "Inline Diff",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/inline-diff",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:46:03.170Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "integration-picker",
+      "name": "Integration Picker",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/integration-picker",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:46:03.560Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "integration-settings",
+      "name": "Integration Settings",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/integration-settings",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:46:05.722Z",
+      "previewStatesInspected": [],
+      "sourceStatus": "reference-only",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": "Pro option — not used",
+      "fitReason": "Rule settings panel reference.",
+      "limitations": "preview inspected; source unavailable; would imply a real connected bank.",
+      "destinationFiles": [],
+      "evidencePaths": [
+        "artifacts/visual-audit/carte/source/integration-settings_idle.png"
+      ]
+    },
+    {
+      "id": "kpi-chart",
+      "name": "KPI Chart",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/kpi-chart",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:46:06.388Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "memory-panel",
+      "name": "Memory Panel",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/memory-panel",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:46:08.516Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "message-actions",
+      "name": "Message Actions",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/message-actions",
+      "access": "public-registry",
+      "inspectedAt": "2026-10-18T16:46:09.149Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": "https://www.affectui.com/r/message-actions.json",
+      "dependencies": [],
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "model-picker",
+      "name": "Model Picker",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/model-picker",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:46:11.117Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "notification-stack",
+      "name": "Notification Stack",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/notification-stack",
+      "access": "public-registry",
+      "inspectedAt": "2026-10-18T16:46:11.761Z",
+      "previewStatesInspected": [
+        "idle",
+        "front dismissed"
+      ],
+      "sourceStatus": "official-source",
+      "registryUrl": "https://www.affectui.com/r/notification-stack.json",
+      "dependencies": [],
+      "carteRole": "bento invested + phone step 06 — Alerts that matter",
+      "fitReason": "Only the front notice is readable; dismiss reveals the next.",
+      "limitations": "Used through props; the adapter moves focus to the next notice / Reset and remounts on reset.",
+      "destinationFiles": [
+        "src/components/references/affectui/notification-stack.tsx",
+        "src/components/sites/carte/security/SecurityAlertsDemo.tsx"
+      ],
+      "evidencePaths": [
+        "artifacts/visual-audit/carte/source/notification-stack_idle.png",
+        "artifacts/visual-audit/carte/source/notification-stack_action.png"
+      ]
+    },
+    {
+      "id": "otp-input",
+      "name": "OTP Input",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/otp-input",
+      "access": "public-registry",
+      "inspectedAt": "2026-10-18T16:46:13.918Z",
+      "previewStatesInspected": [
+        "idle"
+      ],
+      "sourceStatus": "official-source",
+      "registryUrl": "https://www.affectui.com/r/otp-input.json",
+      "dependencies": [],
+      "carteRole": "reference for the verification sandbox — not shipped (no code entry needed: the check is simulated)",
+      "fitReason": "Documents verified / error states the Carte copy mirrors.",
+      "limitations": "Not imported; six code boxes do not fit a 168 px tile and we never ask for a real code.",
+      "destinationFiles": [
+        "src/components/references/affectui/otp-input.tsx"
+      ],
+      "evidencePaths": [
+        "artifacts/visual-audit/carte/source/otp-input_idle.png"
+      ]
+    },
+    {
+      "id": "profile-menu",
+      "name": "Profile Menu",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/profile-menu",
+      "access": "public-registry",
+      "inspectedAt": "2026-10-18T16:46:14.337Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": "https://www.affectui.com/r/profile-menu.json",
+      "dependencies": [],
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "progress-tracker",
+      "name": "Progress Tracker",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/progress-tracker",
+      "access": "public-registry",
+      "inspectedAt": "2026-10-18T16:46:16.441Z",
+      "previewStatesInspected": [
+        "idle"
+      ],
+      "sourceStatus": "official-source",
+      "registryUrl": "https://www.affectui.com/r/progress-tracker.json",
+      "dependencies": [],
+      "carteRole": "phone section — six-checkpoint progress in the process column",
+      "fitReason": "Bar + ticks that draw themselves; reads as a checklist of the demo.",
+      "limitations": "Rebuilt as a controlled tracker (the source owns its own ticks); look and motion mirrored.",
+      "destinationFiles": [
+        "src/components/references/affectui/progress-tracker.tsx",
+        "src/components/sites/carte/security/CheckpointTracker.tsx"
+      ],
+      "evidencePaths": [
+        "artifacts/visual-audit/carte/source/progress-tracker_idle.png"
+      ]
+    },
+    {
+      "id": "project-card",
+      "name": "Project Card",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/project-card",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:46:17.095Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "prompt-library",
+      "name": "Prompt Library",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/prompt-library",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:46:19.413Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "reaction-bar",
+      "name": "Reaction Bar",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/reaction-bar",
+      "access": "public-registry",
+      "inspectedAt": "2026-10-18T16:46:19.910Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": "https://www.affectui.com/r/reaction-bar.json",
+      "dependencies": [],
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "segmented-control",
+      "name": "Segmented Control",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/segmented-control",
+      "access": "public-registry",
+      "inspectedAt": "2026-10-18T16:46:22.055Z",
+      "previewStatesInspected": [
+        "idle",
+        "option 2 selected (action)"
+      ],
+      "sourceStatus": "official-source",
+      "registryUrl": "https://www.affectui.com/r/segmented-control.json",
+      "dependencies": [],
+      "carteRole": "bento credit — Freeze in a tap (Active / Frozen switch for the demo card)",
+      "fitReason": "Binary state with a gliding indicator, radiogroup semantics, arrow / Home / End keys and drag already designed.",
+      "limitations": "Used as-is through props; the frozen state itself lives in the shared demo model.",
+      "destinationFiles": [
+        "src/components/references/affectui/segmented-control.tsx",
+        "src/components/sites/carte/security/CardAccessDemo.tsx"
+      ],
+      "evidencePaths": [
+        "artifacts/visual-audit/carte/source/segmented-control_idle.png",
+        "artifacts/visual-audit/carte/source/segmented-control_action.png"
+      ]
+    },
+    {
+      "id": "setup-guide",
+      "name": "Setup Guide",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/setup-guide",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:46:22.679Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "smart-recommendation",
+      "name": "Smart Recommendation",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/smart-recommendation",
+      "access": "public-registry",
+      "inspectedAt": "2026-10-18T16:46:24.820Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": "https://www.affectui.com/r/smart-recommendation.json",
+      "dependencies": [],
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "stepper-form",
+      "name": "Stepper Form",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/stepper-form",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:46:25.305Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "thinking-loader",
+      "name": "Thinking Loader",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/thinking-loader",
+      "access": "public-registry",
+      "inspectedAt": "2026-10-18T16:46:27.861Z",
+      "previewStatesInspected": [
+        "idle (cycling)"
+      ],
+      "sourceStatus": "official-source",
+      "registryUrl": "https://www.affectui.com/r/thinking-loader.json",
+      "dependencies": [],
+      "carteRole": "bento easy + phone step 05 — Verify the moment (Checking → Verified, simulated)",
+      "fitReason": "Phase labels roll through and settle on a drawn check; reduced-motion aware.",
+      "limitations": "Driven with controlled `done` and custom phases / done label.",
+      "destinationFiles": [
+        "src/components/references/affectui/thinking-loader.tsx",
+        "src/components/sites/carte/security/VerificationDemo.tsx"
+      ],
+      "evidencePaths": [
+        "artifacts/visual-audit/carte/source/thinking-loader_idle.png"
+      ]
+    },
+    {
+      "id": "thinking-state",
+      "name": "Thinking State",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/thinking-state",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:46:27.253Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "tips-panel",
+      "name": "Tips Panel",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/tips-panel",
+      "access": "public-registry",
+      "inspectedAt": "2026-10-18T16:46:29.779Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": "https://www.affectui.com/r/tips-panel.json",
+      "dependencies": [],
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "toaster",
+      "name": "Toaster",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/toaster",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:46:30.189Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "tool-call-card",
+      "name": "Tool Call Card",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/tool-call-card",
+      "access": "public-registry",
+      "inspectedAt": "2026-10-18T16:46:32.325Z",
+      "previewStatesInspected": [
+        "idle"
+      ],
+      "sourceStatus": "official-source",
+      "registryUrl": "https://www.affectui.com/r/tool-call-card.json",
+      "dependencies": [],
+      "carteRole": "reference for the signals disclosure (step 03/04 detail rows)",
+      "fitReason": "Fold-open details with status pill — mirrored for the signal rows.",
+      "limitations": "Not imported (AI tool arguments / results do not apply); disclosure pattern reimplemented.",
+      "destinationFiles": [
+        "src/components/references/affectui/tool-call-card.tsx",
+        "src/components/sites/carte/security/SignalDetails.tsx"
+      ],
+      "evidencePaths": [
+        "artifacts/visual-audit/carte/source/tool-call-card_idle.png"
+      ]
+    },
+    {
+      "id": "usage-meter",
+      "name": "Usage Meter",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/usage-meter",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:46:32.746Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "writing-assistant",
+      "name": "Writing Assistant",
+      "category": "components",
+      "canonicalUrl": "https://www.affectui.com/components/writing-assistant",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:46:34.700Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "agent-team",
+      "name": "Agent Team",
+      "category": "illustrations",
+      "canonicalUrl": "https://www.affectui.com/illustrations/agent-team",
+      "access": "public-registry",
+      "inspectedAt": "2026-10-18T16:46:35.103Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": "https://www.affectui.com/r/agent-team.json",
+      "dependencies": [],
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "cover-flow",
+      "name": "Cover Flow",
+      "category": "illustrations",
+      "canonicalUrl": "https://www.affectui.com/illustrations/cover-flow",
+      "access": "public-registry",
+      "inspectedAt": "2026-10-18T16:46:37.166Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": "https://www.affectui.com/r/cover-flow.json",
+      "dependencies": [],
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "empty-calendar",
+      "name": "Empty Calendar",
+      "category": "illustrations",
+      "canonicalUrl": "https://www.affectui.com/illustrations/empty-calendar",
+      "access": "public-registry",
+      "inspectedAt": "2026-10-18T16:46:37.804Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": "https://www.affectui.com/r/empty-calendar.json",
+      "dependencies": [],
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "enrichment-orbit",
+      "name": "Enrichment Orbit",
+      "category": "illustrations",
+      "canonicalUrl": "https://www.affectui.com/illustrations/enrichment-orbit",
+      "access": "public-registry",
+      "inspectedAt": "2026-10-18T16:46:39.742Z",
+      "previewStatesInspected": [
+        "idle"
+      ],
+      "sourceStatus": "official-source",
+      "registryUrl": "https://www.affectui.com/r/enrichment-orbit.json",
+      "dependencies": [],
+      "carteRole": "bento ai — Signals in focus (device, amount, location orbiting the Carte shield)",
+      "fitReason": "Small SVG illustration with two counter-rotating comets; nodes stay upright.",
+      "limitations": "Forked: Grok mark replaced by a shield, nodes get Device / Amount / Location glyphs, animation pauses off-screen. Illustration only — no claim of a live fraud model.",
+      "destinationFiles": [
+        "src/components/references/affectui/enrichment-orbit.tsx",
+        "src/components/sites/carte/security/RiskSignalsScene.tsx"
+      ],
+      "evidencePaths": [
+        "artifacts/visual-audit/carte/source/enrichment-orbit_idle.png"
+      ]
+    },
+    {
+      "id": "frost-cloud",
+      "name": "Frost Cloud",
+      "category": "illustrations",
+      "canonicalUrl": "https://www.affectui.com/illustrations/frost-cloud",
+      "access": "public-registry",
+      "inspectedAt": "2026-10-18T16:46:40.197Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": "https://www.affectui.com/r/frost-cloud.json",
+      "dependencies": [],
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "ghosted-chat",
+      "name": "Ghosted Chat",
+      "category": "illustrations",
+      "canonicalUrl": "https://www.affectui.com/illustrations/ghosted-chat",
+      "access": "public-registry",
+      "inspectedAt": "2026-10-18T16:46:42.371Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": "https://www.affectui.com/r/ghosted-chat.json",
+      "dependencies": [],
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "glass-folder",
+      "name": "Glass Folder",
+      "category": "illustrations",
+      "canonicalUrl": "https://www.affectui.com/illustrations/glass-folder",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:46:43.041Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "glow-cloud",
+      "name": "Glow Cloud",
+      "category": "illustrations",
+      "canonicalUrl": "https://www.affectui.com/illustrations/glow-cloud",
+      "access": "public-registry",
+      "inspectedAt": "2026-10-18T16:46:45.196Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": "https://www.affectui.com/r/glow-cloud.json",
+      "dependencies": [],
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "glow-keyboard",
+      "name": "Glow Keyboard",
+      "category": "illustrations",
+      "canonicalUrl": "https://www.affectui.com/illustrations/glow-keyboard",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:46:45.681Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "integration-beam",
+      "name": "Integration Beam",
+      "category": "illustrations",
+      "canonicalUrl": "https://www.affectui.com/illustrations/integration-beam",
+      "access": "public-registry",
+      "inspectedAt": "2026-10-18T16:46:48.257Z",
+      "previewStatesInspected": [
+        "idle (syncing)",
+        "first node paused"
+      ],
+      "sourceStatus": "official-source",
+      "registryUrl": "https://www.affectui.com/r/integration-beam.json",
+      "dependencies": [],
+      "carteRole": "bento customers — A safer route for every payment (Card · Device · Merchant → Carte → Checks · Approval · Receipt)",
+      "fitReason": "Measured beams, sequenced pulses, hover focus, click to pause with live status — explains a payment route without fake partner logos.",
+      "limitations": "Used through props with Carte glyphs; no third-party logos. Font / spacing overridden from the adapter scope.",
+      "destinationFiles": [
+        "src/components/references/affectui/integration-beam.tsx",
+        "src/components/sites/carte/security/PaymentRouteScene.tsx"
+      ],
+      "evidencePaths": [
+        "artifacts/visual-audit/carte/source/integration-beam_idle.png",
+        "artifacts/visual-audit/carte/source/integration-beam_action.png"
+      ]
+    },
+    {
+      "id": "integration-flow",
+      "name": "Integration Flow",
+      "category": "illustrations",
+      "canonicalUrl": "https://www.affectui.com/illustrations/integration-flow",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:46:47.633Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "integration-grid",
+      "name": "Integration Grid",
+      "category": "illustrations",
+      "canonicalUrl": "https://www.affectui.com/illustrations/integration-grid",
+      "access": "public-registry",
+      "inspectedAt": "2026-10-18T16:46:50.345Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": "https://www.affectui.com/r/integration-grid.json",
+      "dependencies": [],
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "layer-stack",
+      "name": "Layer Stack",
+      "category": "illustrations",
+      "canonicalUrl": "https://www.affectui.com/illustrations/layer-stack",
+      "access": "public-registry",
+      "inspectedAt": "2026-10-18T16:46:51.046Z",
+      "previewStatesInspected": [
+        "idle (auto-cycle)",
+        "third entry picked"
+      ],
+      "sourceStatus": "official-source",
+      "registryUrl": "https://www.affectui.com/r/layer-stack.json",
+      "dependencies": [],
+      "carteRole": "bento trust — Protection, in layers (five checkpoints around a payment)",
+      "fitReason": "Five selectable layers, auto-cycle that stops after user input, hover/focus pause, ↑/↓ keys.",
+      "limitations": "Forked: Carte icons (the source only ships bolt/database/plug/spark/pulse), controlled index for the shared model, compact list-under-stack layout for the 358 px column.",
+      "destinationFiles": [
+        "src/components/references/affectui/layer-stack.tsx",
+        "src/components/sites/carte/security/SecurityLayersScene.tsx"
+      ],
+      "evidencePaths": [
+        "artifacts/visual-audit/carte/source/layer-stack_idle.png",
+        "artifacts/visual-audit/carte/source/layer-stack_action.png"
+      ]
+    },
+    {
+      "id": "lead-sourcing",
+      "name": "Lead Sourcing",
+      "category": "illustrations",
+      "canonicalUrl": "https://www.affectui.com/illustrations/lead-sourcing",
+      "access": "public-registry",
+      "inspectedAt": "2026-10-18T16:46:53.153Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": "https://www.affectui.com/r/lead-sourcing.json",
+      "dependencies": [],
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "logo-cluster",
+      "name": "Logo Cluster",
+      "category": "illustrations",
+      "canonicalUrl": "https://www.affectui.com/illustrations/logo-cluster",
+      "access": "public-registry",
+      "inspectedAt": "2026-10-18T16:46:53.807Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": "https://www.affectui.com/r/logo-cluster.json",
+      "dependencies": [],
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "model-wheel",
+      "name": "Model Wheel",
+      "category": "illustrations",
+      "canonicalUrl": "https://www.affectui.com/illustrations/model-wheel",
+      "access": "public-registry",
+      "inspectedAt": "2026-10-18T16:46:55.894Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": "https://www.affectui.com/r/model-wheel.json",
+      "dependencies": [],
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "outreach-branches",
+      "name": "Outreach Branches",
+      "category": "illustrations",
+      "canonicalUrl": "https://www.affectui.com/illustrations/outreach-branches",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:46:57.174Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "project-flow",
+      "name": "Project Flow",
+      "category": "illustrations",
+      "canonicalUrl": "https://www.affectui.com/illustrations/project-flow",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:46:59.070Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "region-dach",
+      "name": "DACH Region",
+      "category": "illustrations",
+      "canonicalUrl": "https://www.affectui.com/illustrations/region-dach",
+      "access": "public-registry",
+      "inspectedAt": "2026-10-18T16:46:59.730Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": "https://www.affectui.com/r/region-dach.json",
+      "dependencies": [],
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "side-folder",
+      "name": "Side Folder",
+      "category": "illustrations",
+      "canonicalUrl": "https://www.affectui.com/illustrations/side-folder",
+      "access": "public-registry",
+      "inspectedAt": "2026-10-18T16:47:01.650Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": "https://www.affectui.com/r/side-folder.json",
+      "dependencies": [],
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "tab-overload",
+      "name": "Tab Overload",
+      "category": "illustrations",
+      "canonicalUrl": "https://www.affectui.com/illustrations/tab-overload",
+      "access": "public-registry",
+      "inspectedAt": "2026-10-18T16:47:02.265Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": "https://www.affectui.com/r/tab-overload.json",
+      "dependencies": [],
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "team-invite",
+      "name": "Team Invite",
+      "category": "illustrations",
+      "canonicalUrl": "https://www.affectui.com/illustrations/team-invite",
+      "access": "public-registry",
+      "inspectedAt": "2026-10-18T16:47:04.507Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": "https://www.affectui.com/r/team-invite.json",
+      "dependencies": [],
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "voice-orb",
+      "name": "Voice Orb",
+      "category": "illustrations",
+      "canonicalUrl": "https://www.affectui.com/illustrations/voice-orb",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:47:05.318Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "world-map",
+      "name": "World Map Continental",
+      "category": "illustrations",
+      "canonicalUrl": "https://www.affectui.com/illustrations/world-map",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:47:07.326Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "blur-crossfade",
+      "name": "Blur Crossfade",
+      "category": "motion",
+      "canonicalUrl": "https://www.affectui.com/motion/blur-crossfade",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:47:07.943Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "gradient-floor",
+      "name": "Gradient Floor",
+      "category": "motion",
+      "canonicalUrl": "https://www.affectui.com/motion/gradient-floor",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:47:09.852Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "gradient-text",
+      "name": "Gradient Text",
+      "category": "motion",
+      "canonicalUrl": "https://www.affectui.com/motion/gradient-text",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:47:10.458Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "grid-background",
+      "name": "Grid Background",
+      "category": "motion",
+      "canonicalUrl": "https://www.affectui.com/motion/grid-background",
+      "access": "public-registry",
+      "inspectedAt": "2026-10-18T16:47:12.571Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": "https://www.affectui.com/r/grid-background.json",
+      "dependencies": [],
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "number-ticker",
+      "name": "Number Ticker",
+      "category": "motion",
+      "canonicalUrl": "https://www.affectui.com/motion/number-ticker",
+      "access": "public-registry",
+      "inspectedAt": "2026-10-18T16:47:13.216Z",
+      "previewStatesInspected": [
+        "idle"
+      ],
+      "sourceStatus": "official-source",
+      "registryUrl": "https://www.affectui.com/r/number-ticker.json",
+      "dependencies": [],
+      "carteRole": "amount roll-in on the review panel ($32.10 demo charge)",
+      "fitReason": "Odometer digits for the single demo amount.",
+      "limitations": "Only the demo fixture amount is animated.",
+      "destinationFiles": [
+        "src/components/references/affectui/number-ticker.tsx",
+        "src/components/sites/carte/security/PaymentDecisionDemo.tsx"
+      ],
+      "evidencePaths": [
+        "artifacts/visual-audit/carte/source/number-ticker_idle.png"
+      ]
+    },
+    {
+      "id": "shimmer-loader",
+      "name": "Shimmer Loader",
+      "category": "motion",
+      "canonicalUrl": "https://www.affectui.com/motion/shimmer-loader",
+      "access": "public-registry",
+      "inspectedAt": "2026-10-18T16:47:15.344Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": "https://www.affectui.com/r/shimmer-loader.json",
+      "dependencies": [],
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "text-reveal",
+      "name": "Text Reveal",
+      "category": "motion",
+      "canonicalUrl": "https://www.affectui.com/motion/text-reveal",
+      "access": "public-registry",
+      "inspectedAt": "2026-10-18T16:47:15.851Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": "https://www.affectui.com/r/text-reveal.json",
+      "dependencies": [],
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "tilt-card",
+      "name": "Tilt Card",
+      "category": "motion",
+      "canonicalUrl": "https://www.affectui.com/motion/tilt-card",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:47:17.841Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "agent-chat",
+      "name": "Agent Chat",
+      "category": "screens",
+      "canonicalUrl": "https://www.affectui.com/screens/agent-chat",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:47:18.309Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "agent-run",
+      "name": "Agent Run",
+      "category": "screens",
+      "canonicalUrl": "https://www.affectui.com/screens/agent-run",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:47:20.239Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "analytics",
+      "name": "Analytics",
+      "category": "screens",
+      "canonicalUrl": "https://www.affectui.com/screens/analytics",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:47:20.850Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "app-shell",
+      "name": "App Shell",
+      "category": "screens",
+      "canonicalUrl": "https://www.affectui.com/screens/app-shell",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:47:23.562Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "assistant-home",
+      "name": "Assistant Home",
+      "category": "screens",
+      "canonicalUrl": "https://www.affectui.com/screens/assistant-home",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:47:22.930Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "crm",
+      "name": "CRM",
+      "category": "screens",
+      "canonicalUrl": "https://www.affectui.com/screens/crm",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:47:26.214Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "evals",
+      "name": "Evals",
+      "category": "screens",
+      "canonicalUrl": "https://www.affectui.com/screens/evals",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:47:25.586Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "files",
+      "name": "Folders",
+      "category": "screens",
+      "canonicalUrl": "https://www.affectui.com/screens/files",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:47:28.323Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "folder",
+      "name": "Folder",
+      "category": "screens",
+      "canonicalUrl": "https://www.affectui.com/screens/folder",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:47:28.949Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "integrations",
+      "name": "Integrations",
+      "category": "screens",
+      "canonicalUrl": "https://www.affectui.com/screens/integrations",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:47:30.880Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "onboarding",
+      "name": "Onboarding",
+      "category": "screens",
+      "canonicalUrl": "https://www.affectui.com/screens/onboarding",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:47:31.505Z",
+      "previewStatesInspected": [
+        "detail page rendered"
+      ],
+      "sourceStatus": "not-selected",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": null,
+      "fitReason": null,
+      "limitations": null,
+      "destinationFiles": [],
+      "evidencePaths": []
+    },
+    {
+      "id": "settings-billing",
+      "name": "Settings & Billing",
+      "category": "screens",
+      "canonicalUrl": "https://www.affectui.com/screens/settings-billing",
+      "access": "pro",
+      "inspectedAt": "2026-10-18T16:47:33.494Z",
+      "previewStatesInspected": [],
+      "sourceStatus": "reference-only",
+      "registryUrl": null,
+      "dependencies": null,
+      "carteRole": "Pro option — not used",
+      "fitReason": "Security-control dashboard layout reference for a later route.",
+      "limitations": "preview inspected; source unavailable; billing content out of scope.",
+      "destinationFiles": [],
+      "evidencePaths": [
+        "artifacts/visual-audit/carte/source/settings-billing_idle.png"
+      ]
+    }
+  ]
+}

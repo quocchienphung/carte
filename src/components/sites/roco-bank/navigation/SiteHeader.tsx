@@ -1,5 +1,7 @@
 "use client";
 
+import { BRAND } from "@/lib/roco-bank/content";
+
 import { LogoMark } from "../brand/LogoMark";
 import { Wordmark } from "../brand/Wordmark";
 import { useAnim } from "../motion-context";
@@ -25,7 +27,7 @@ export function SiteHeader({ theme, decorative = false, layout = "stage" }: Prop
       aria-hidden={decorative || undefined}
     >
       <header ref={layout === "stage" ? anim(innerKey) : undefined} className={`${styles.header} ${styles[theme]}`}>
-        <a className={styles.brand} href="#top" tabIndex={decorative ? -1 : undefined} aria-label="Roco.bank home">
+        <a className={styles.brand} href="#top" tabIndex={decorative ? -1 : undefined} aria-label={`${BRAND.name} home`}>
           <LogoMark className={styles.mark} size={40} />
           <Wordmark className={styles.word} />
         </a>

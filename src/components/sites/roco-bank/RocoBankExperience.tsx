@@ -7,7 +7,7 @@ import { StyleApplier } from "@/lib/roco-bank/motion/applier";
 import { groupProgressInteractive } from "@/lib/roco-bank/motion/bento";
 import { evaluate, REPLAY_DURATION } from "@/lib/roco-bank/motion/timeline";
 
-import { anchors, mapScroll, scrollLength, type AnchorId } from "@/lib/roco-bank/scroll-map";
+import { anchors, mapScroll, scrollLength, SEG, type AnchorId } from "@/lib/roco-bank/scroll-map";
 import { subscribeViewport, viewportSize } from "@/lib/roco-bank/viewport";
 
 import { BentoScene } from "./bento/BentoScene";
@@ -124,21 +124,27 @@ export function RocoBankExperience() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const morph = useRef<{ towardsB: boolean; start: number; from: Record<MorphGroup, number> } | null>(null);
   const morphNow = useRef<Record<MorphGroup, number>>({ bottom: 0, middle: 0, left: 0 });
+  const handingOff = useRef(false);
   const foldRef = useRef<FoldSceneHandle>(null);
   const handoffWrapRef = useRef<HTMLDivElement>(null);
-  const lastHandoff = useRef("");
+  const lastHandoff = useRef<{ element: HTMLDivElement; key: string } | null>(null);
   /** "packaging": keeps the DOM bento glued to the device's inner screen while it shrinks */
   const onHandoff = useCallback((domScale: number, domShowing: boolean) => {
     const el = handoffWrapRef.current;
     if (!el) return;
-    const key = `${domScale.toFixed(5)}|${domShowing}`;
-    if (key === lastHandoff.current) return;
-    lastHandoff.current = key;
-    el.style.transform = domScale === 1 ? "" : `scale(${domScale.toFixed(5)})`;
+    // Use the rendered precision for both the cache and the phase. A scale such as
+    // 0.99999999 renders as 1 but used to leave the black handoff background behind:
+    // the subsequent reset to exactly 1 had the same cache key and was skipped.
+    const scale = Number(domScale.toFixed(5));
+    const key = `${scale}|${domShowing}`;
+    if (lastHandoff.current?.element === el && lastHandoff.current.key === key) return;
+    // A responsive remount or Fast Refresh can replace the node while retaining this ref.
+    lastHandoff.current = { element: el, key };
+    el.style.transform = scale === 1 ? "" : `scale(${scale})`;
     // the area the scaled stage no longer covers must stay bento-black (no visible frame edge)
-    if (el.parentElement) el.parentElement.style.background = domScale === 1 ? "" : "#111111";
+    if (el.parentElement) el.parentElement.style.background = scale === 1 ? "" : "#111111";
     el.style.visibility = domShowing ? "" : "hidden"; // covered by the night layer + WebGL screen
-    el.dataset.handoff = domScale === 1 ? "" : "dom";
+    el.dataset.handoff = scale === 1 ? "" : "dom";
   }, []);
 
   // ------------------------------------------------------------------ replay mode
@@ -236,7 +242,19 @@ export function RocoBankExperience() {
           frameH: frameRef.current.h,
         }),
       );
-      foldRef.current?.update({ pull: sm.pull, fold: sm.fold, after: sm.after, processPx: sm.processPx, visible: sm.foldVisible });
+      // while the bento is handed to the device the A/B morph holds where it is (hover ignored), so
+      // the DOM and the device texture show the same layout
+      handingOff.current = sm.pull > 0;
+      const mn = morphNow.current;
+      foldRef.current?.update({
+        pull: sm.pull,
+        fold: sm.fold,
+        after: sm.after,
+        processPx: sm.processPx,
+        visible: sm.foldVisible,
+        bentoShown: smoothY >= SEG.TRANSITION - 2,
+        layoutKey: `${mn.bottom.toFixed(2)}|${mn.middle.toFixed(2)}|${mn.left.toFixed(2)}`,
+      });
       raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
@@ -251,7 +269,7 @@ export function RocoBankExperience() {
 
   /** inferred interaction (not in the film): hovering / focusing the Customers tile shows layout B */
   const onTileFocus = useCallback((id: TileId, focused: boolean) => {
-    if (id !== "customers") return;
+    if (id !== "customers" || handingOff.current) return;
     const cur = morph.current;
     if (cur && cur.towardsB === focused) return;
     morph.current = { towardsB: focused, start: performance.now(), from: { ...morphNow.current } };

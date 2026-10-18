@@ -218,3 +218,14 @@
   justify-content: center;
   will-change: transform;
 }
+
+.capability {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--roco-font-sans);
+  font-size: 13.5px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}

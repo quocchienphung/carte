@@ -8,6 +8,8 @@ import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { MeshoptDecoder } from "three/examples/jsm/libs/meshopt_decoder.module.js";
 
+import { INNER_UI_SIZE, OUTER_UI_SIZE } from "./ui-size";
+
 export type FoldState = {
   /** 0 = inner screen fills the bento area 1:1, 1 = whole device framed */
   pull: number;
@@ -24,8 +26,7 @@ const UI_EYE = new THREE.Vector3(0, 0, 40);
 const OUTER_FRAME = new THREE.Vector4(0.23396, 0.27173 - 5.8974, 7.73936, 11.2513).multiplyScalar(
   (UI_EYE.z - SCREEN_Z) / (UI_EYE.z - 0.825538),
 );
-export const INNER_UI_SIZE = { w: 1600, h: 1125 } as const;
-export const OUTER_UI_SIZE = { w: 774, h: 1125 } as const;
+export { INNER_UI_SIZE, OUTER_UI_SIZE } from "./ui-size";
 
 const SCREEN_SHADER = /* glsl */ `
 uniform float foldAngle;
@@ -448,6 +449,12 @@ export class FoldEngine {
 
   refreshOuter() {
     this.screens.outer.texture.needsUpdate = true;
+    this.dirty = true;
+  }
+
+  /** the inner canvas was re-painted from the live bento */
+  refreshInner() {
+    this.screens.inner.texture.needsUpdate = true;
     this.dirty = true;
   }
 

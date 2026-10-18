@@ -107,14 +107,14 @@
   color: var(--accent);
 }
 
-/* the extra process control: pay from the page */
-.pay {
+/* inline demo controls (dark pill = primary answer, quiet outline = secondary) */
+.pay,
+.run {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   height: 34px;
-  margin-top: 14px;
-  padding: 0 16px 0 13px;
+  padding: 0 16px;
   border: 0;
   border-radius: 999px;
   background: var(--ink);
@@ -125,19 +125,142 @@
   transition: background-color 200ms ease, transform 160ms ease;
 }
 
-.pay:hover {
+.run {
+  height: 38px;
+  padding: 0 18px 0 15px;
+  font-size: 14px;
+}
+
+.pay:hover,
+.run:hover {
   background: var(--accent);
 }
 
-.pay:active {
+.pay:active,
+.run:active,
+.ghost:active,
+.reset:active {
   transform: scale(0.97);
 }
 
-.pay:focus-visible {
+.ghost,
+.reset {
+  display: inline-flex;
+  align-items: center;
+  height: 34px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--ink);
+  font: 500 13px/1 var(--font-schibsted), sans-serif;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  transition: background-color 200ms ease, border-color 200ms ease, transform 160ms ease;
+}
+
+.reset {
+  height: 38px;
+  font-size: 14px;
+}
+
+.ghost:hover,
+.reset:hover {
+  border-color: rgb(200, 195, 183);
+  background: #fff;
+}
+
+.column button:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
 
-.column[data-paid="true"] .pay {
-  background: rgb(52, 199, 89);
+.cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 10px;
+  margin-top: 22px;
+}
+
+.demoLabel {
+  flex-basis: 100%;
+  font-family: var(--font-jetbrains), "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--num);
+}
+
+.inline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.flag {
+  flex-basis: 100%;
+  font-size: 12.5px;
+  line-height: 18px;
+  color: rgb(196, 98, 28);
+}
+
+.facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 10px 0 0;
+}
+
+.facts span {
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: rgba(26, 26, 23, 0.05);
+  font-size: 12.5px;
+  line-height: 18px;
+  color: var(--ink);
+}
+
+.outcome {
+  margin: 10px 0 0;
+  font-size: 13px;
+  line-height: 19px;
+  font-weight: 500;
+}
+
+.outcome[data-tone="ok"] {
+  color: rgb(31, 138, 76);
+}
+
+.outcome[data-tone="warn"] {
+  color: rgb(40, 102, 168);
+}
+
+/* the step-06 result line reads as "what will happen" until the run reaches it */
+.column:not([data-paid="true"]) [data-paid-only] {
+  opacity: 0.55;
+}
+
+.remote {
+  margin-top: 40px;
+}
+
+.remote :global(.ui-cs),
+.remote :global(.ui-cs *),
+.column :global(.ui-tl),
+.column :global(.ui-tl *) {
+  font-family: var(--font-schibsted), "Schibsted Grotesk", sans-serif;
+}
+
+.remote :global(.ui-cs) {
+  max-width: none;
+}
+
+.remoteNote {
+  margin: 12px 4px 0;
+  font-size: 13px;
+  line-height: 19px;
+  color: var(--muted);
 }

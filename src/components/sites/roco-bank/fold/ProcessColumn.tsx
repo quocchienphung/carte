@@ -2,33 +2,46 @@
 
 import { forwardRef } from "react";
 
+import { ChangeSummary } from "@/components/references/affectui/change-summary";
+import { ThinkingLoader } from "@/components/references/affectui/thinking-loader";
+import { DEMO, VERIFY_PHASES, decisionResult, demoStore, remoteRows, useDemo } from "@/lib/carte/security-demo";
+import { SECURITY_STORY } from "@/lib/roco-bank/content";
+
 import styles from "./process.module.css";
 
-// Clone of the Plinth "What actually happens to a request." section components (eyebrow, heading,
-// lede, numbered step cards with active / upcoming / passed states), measured on
-// plinthdev.framer.website. The isometric block stack is intentionally removed; the device beside
-// this column plays its role. Copy adapted to the Apple Pay flow shown on the cover screen.
+// Carte security story beside the device (Plinth process-column components: eyebrow, heading, lede,
+// numbered cards with upcoming / active / passed states, activated at 48 % of the viewport). Six
+// checkpoints mirror the cover screen's process time; the inline controls write the shared demo
+// model, so the bento, the phone and this column always show the same demo card.
 
-export const PROCESS_STEPS = [
-  { title: "Wake", body: "Double-click the side button. Wallet opens on the cover screen, no unlock needed." },
-  { title: "Cards", body: "Your Roco.bank cards rise into the stack, the one you used last on top." },
-  { title: "Choose", body: "Vietcombank Priority is your default. Swipe the stack to pay with another card." },
-  { title: "Pay", body: "Tap Pay. The merchant and the exact amount are shown before anything is sent." },
-  { title: "Face ID", body: "Face ID confirms it is you in under a second. Your card number is never shared." },
-  { title: "Done", body: "A green check and a soft chime. The receipt lands in Roco.bank instantly." },
-] as const;
+export const PROCESS_STEPS = SECURITY_STORY.steps;
 
-type Props = { onPay: () => void };
+type Props = { onRun: () => void; onReset: () => void };
 
-export const ProcessColumn = forwardRef<HTMLDivElement, Props>(function ProcessColumn({ onPay }, ref) {
+export const ProcessColumn = forwardRef<HTMLDivElement, Props>(function ProcessColumn({ onRun, onReset }, ref) {
+  const demo = useDemo();
+  const result = decisionResult(demo.decision);
+  const rows = remoteRows(demo);
   return (
     <div ref={ref} className={styles.column} data-active="-1">
-      <p className={styles.eyebrow}>Apple Pay</p>
+      <p className={styles.eyebrow}>{SECURITY_STORY.eyebrow}</p>
       <h2 className={styles.heading}>
-        What actually happens <br />
-        when you pay.
+        What happens <br />
+        before you approve.
       </h2>
-      <p className={styles.lede}>Six steps, and the only one you notice takes under a second.</p>
+      <p className={styles.lede}>{SECURITY_STORY.lede}</p>
+      <div className={styles.cta}>
+        <button type="button" className={styles.run} onClick={onRun}>
+          <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden>
+            <path d="M8 5.5v13l10.5-6.5z" fill="currentColor" />
+          </svg>
+          {SECURITY_STORY.cta}
+        </button>
+        <button type="button" className={styles.reset} onClick={onReset}>
+          {SECURITY_STORY.reset}
+        </button>
+        <span className={styles.demoLabel}>{DEMO.label}</span>
+      </div>
       <ol className={styles.steps}>
         {PROCESS_STEPS.map((s, i) => (
           <li key={s.title} className={styles.step} data-step={i}>
@@ -36,24 +49,59 @@ export const ProcessColumn = forwardRef<HTMLDivElement, Props>(function ProcessC
               <p className={styles.num}>{String(i + 1).padStart(2, "0")}</p>
               <p className={styles.title}>{s.title}</p>
               <p className={styles.body}>{s.body}</p>
+              {i === 2 ? (
+                <p className={styles.facts}>
+                  <span>{DEMO.merchant}</span>
+                  <span>{DEMO.amountLabel}</span>
+                  <span>Card ending {DEMO.cardLast4}</span>
+                </p>
+              ) : null}
               {i === 3 ? (
-                <button type="button" className={styles.pay} onClick={onPay}>
-                  <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden>
-                    <path
-                      d="M2 6V4a2 2 0 0 1 2-2h2M14 2h2a2 2 0 0 1 2 2v2M18 14v2a2 2 0 0 1-2 2h-2M6 18H4a2 2 0 0 1-2-2v-2M7 7v1.5M13 7v1.5M10 7v4H9M7.2 13.4a4 4 0 0 0 5.6 0"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                  Click to pay
-                </button>
+                demo.decision === "pending" ? (
+                  <div className={styles.inline}>
+                    <span className={styles.flag}>{DEMO.device} · {DEMO.verdict}</span>
+                    <button type="button" className={styles.pay} onClick={() => demoStore.decide("recognize")}>
+                      Recognize
+                    </button>
+                    <button type="button" className={styles.ghost} onClick={() => demoStore.decide("freeze")}>
+                      Freeze demo card
+                    </button>
+                  </div>
+                ) : (
+                  <p className={styles.outcome} data-tone={result?.tone} role="status">
+                    {result?.title}. {result?.text}
+                  </p>
+                )
+              ) : null}
+              {i === 4 && demo.verification !== "idle" ? (
+                <div className={styles.inline}>
+                  <ThinkingLoader phases={[...VERIFY_PHASES]} interval={950} done={demo.verification === "verified"} doneLabel="Verified · demo" size="sm" />
+                </div>
+              ) : null}
+              {i === 5 ? (
+                <p className={styles.outcome} data-tone={demo.decision === "frozen" || demo.card === "frozen" ? "warn" : "ok"} data-paid-only>
+                  {demo.decision === "frozen" || demo.card === "frozen" ? `Card ending ${DEMO.cardLast4} frozen · payment declined` : "Approved · demo payment, no real charge"}
+                </p>
               ) : null}
             </div>
           </li>
         ))}
       </ol>
+      <div className={styles.remote}>
+        <ChangeSummary
+          title="Remote overview"
+          period="Demo"
+          changes={rows.map((r) => ({
+            label: r.label,
+            change: r.value,
+            tone: r.tone === "good" ? "good" : r.tone === "bad" ? "bad" : "neutral",
+            direction: r.tone === "bad" ? "up" : undefined,
+          }))}
+        />
+        <p className={styles.remoteNote}>
+          The same demo card, managed from the cover screen: freeze it in the bento above, review the payment, run the check.
+        </p>
+      </div>
     </div>
   );
 });

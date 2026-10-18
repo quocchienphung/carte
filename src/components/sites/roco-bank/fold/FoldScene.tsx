@@ -2,15 +2,26 @@
 
 import { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from "react";
 
+import { decorGate, demoStore } from "@/lib/carte/security-demo";
 import type { FoldEngine } from "@/lib/roco-bank/fold/engine";
-import type { WalletScreen } from "@/lib/roco-bank/fold/screens";
+import type { WalletScreen, drawInnerScreen } from "@/lib/roco-bank/fold/screens";
 import { ACTIVE_LINE } from "@/lib/roco-bank/scroll-map";
 import { subscribeViewport, viewportSize } from "@/lib/roco-bank/viewport";
 
 import { ProcessColumn } from "./ProcessColumn";
 import styles from "./fold.module.css";
 
-export type FoldUpdate = { pull: number; fold: number; after: number; processPx: number; visible: boolean };
+export type FoldUpdate = {
+  pull: number;
+  fold: number;
+  after: number;
+  processPx: number;
+  visible: boolean;
+  /** the bento is on screen (transition done) — the inner-screen texture may be refreshed */
+  bentoShown: boolean;
+  /** A <-> B morph progress of the bento, rounded (a change re-paints the inner-screen texture) */
+  layoutKey: string;
+};
 export type FoldSceneHandle = { update: (state: FoldUpdate) => void; warm: () => void };
 
 type Props = {
@@ -34,9 +45,10 @@ const MODEL_URL = "/sites/roco-bank/iphone-duo/iPhone_Duo.glb";
 const MODEL_FALLBACK_URL = "/sites/roco-bank/iphone-duo/iPhone_Duo_Render.usdc";
 /** never compete with the hero intro: start after it (≈3.4 s) in idle time, or earlier on demand */
 const WARM_AFTER_MS = 3600;
-const PAY_DURATION = 2.6; // s, click-to-pay: Pay press → Face ID → green check
+/** "Run security demo": one process-time unit (one checkpoint) per RUN_STEP seconds */
+const RUN_STEP = 1.15;
 
-/** soft two-tone "ting" (Apple Pay–like success chime) */
+/** soft two-tone "ting" for the approved demo result */
 function chime() {
   try {
     const Ctx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
@@ -61,9 +73,10 @@ function chime() {
   }
 }
 
-/** After the bento: the page hands the bento to the inner screen of a 3D foldable (Apple's iPhone
- *  Duo AR model, fold engine from jadon7/iphone-duo), the device pops in and closes, slides left,
- *  and the cover screen runs the Apple Pay flow while the Plinth-style process column scrolls by. */
+/** After the bento: the page hands the live Carte bento to the inner screen of a 3D foldable (Apple's
+ *  iPhone Duo AR model, fold engine from jadon7/iphone-duo), the device pops in and closes, slides
+ *  left, and the cover screen runs the Carte security demo — six checkpoints and a remote overview —
+ *  while the process column scrolls by. Bento, column and both screens read one demo model. */
 export const FoldScene = forwardRef<FoldSceneHandle, Props>(function FoldScene({ contentW, contentH, onHandoff }, ref) {
   const handoffRef = useRef(onHandoff);
   useEffect(() => {
@@ -74,9 +87,13 @@ export const FoldScene = forwardRef<FoldSceneHandle, Props>(function FoldScene({
   const columnRef = useRef<HTMLDivElement>(null);
   const engineRef = useRef<FoldEngine | null>(null);
   const walletRef = useRef<WalletScreen | null>(null);
-  const stateRef = useRef<FoldUpdate>({ pull: 0, fold: 0, after: 0, processPx: 0, visible: false });
+  const stateRef = useRef<FoldUpdate>({ pull: 0, fold: 0, after: 0, processPx: 0, visible: false, bentoShown: false, layoutKey: "" });
   const sizeRef = useRef({ contentW, contentH });
-  const payRef = useRef<{ start: number; from: number; chimed: boolean } | null>(null);
+  const runRef = useRef<{ start: number; from: number; chimed: boolean } | null>(null);
+  /** inner-screen texture: its canvas, resolution and painter (loaded with the engine) */
+  const innerRef = useRef<{ canvas: HTMLCanvasElement; res: number; paint: typeof drawInnerScreen } | null>(null);
+  /** what the texture was last painted from, and whether a paint is running */
+  const snapRef = useRef({ version: -1, layoutKey: "", busy: false });
   const activeRef = useRef(-2);
   const [status, setStatus] = useState<"idle" | "loading" | "ready" | "error">("idle");
   const [loadError, setLoadError] = useState("");
@@ -99,14 +116,45 @@ export const FoldScene = forwardRef<FoldSceneHandle, Props>(function FoldScene({
         sub = Math.min(1, (line - y) / el.offsetHeight);
       }
     });
-    if (active !== activeRef.current) {
-      activeRef.current = active;
-      steps.forEach((el, i) => {
-        el.dataset.state = i === active ? "active" : i < active ? "passed" : "upcoming";
-      });
-    }
     // before the first card is active, keep the lock screen; then 1 unit of time per card
     return active < 0 ? -1 : active + sub;
+  }, []);
+
+  /** card states follow the effective process time (scroll, or a running demo ahead of it) */
+  const applyStates = useCallback((t: number) => {
+    const col = columnRef.current;
+    if (!col) return;
+    const active = t < 0 ? -1 : Math.min(5, Math.floor(t));
+    if (active === activeRef.current) return;
+    activeRef.current = active;
+    col.querySelectorAll<HTMLElement>("[data-step]").forEach((el, i) => {
+      el.dataset.state = i === active ? "active" : i < active ? "passed" : "upcoming";
+    });
+  }, []);
+
+  /** re-paint the inner-screen texture from the live bento when the demo state or the morph changed */
+  const maybeSnapshot = useCallback(() => {
+    const inner = innerRef.current;
+    const st = stateRef.current;
+    const snap = snapRef.current;
+    if (!inner || !engineRef.current || snap.busy || !st.bentoShown) return;
+    const version = demoStore.get().version;
+    if (version === snap.version && st.layoutKey === snap.layoutKey) return;
+    const bento = document.querySelector<HTMLElement>("[data-carte-bento]");
+    if (!bento) return;
+    snap.busy = true;
+    const target = { version, layoutKey: st.layoutKey };
+    inner
+      .paint(inner.canvas, inner.res, bento)
+      .then(() => {
+        snap.version = target.version;
+        snap.layoutKey = target.layoutKey;
+        engineRef.current?.refreshInner();
+      })
+      .catch((e) => console.warn("inner screen paint failed", e))
+      .finally(() => {
+        snap.busy = false;
+      });
   }, []);
 
   const renderFrame = useCallback(() => {
@@ -119,27 +167,36 @@ export const FoldScene = forwardRef<FoldSceneHandle, Props>(function FoldScene({
       root.dataset.visible = st.visible ? "true" : "false";
       root.dataset.settled = st.after > 0.6 ? "true" : "false";
     }
-    let t = processTime(st.processPx);
-    const pay = payRef.current;
-    if (pay) {
-      if (t < 2.5) payRef.current = null; // scrolled back above the Pay step → reset
+    const tScroll = processTime(st.processPx);
+    let t = tScroll;
+    const run = runRef.current;
+    if (run) {
+      // a run keeps going without more scrolling; scrolling back above the first checkpoint (or
+      // Reset demo) ends it
+      if (tScroll < 0 && st.after < 1) runRef.current = null;
       else {
-        const k = Math.min(1, (performance.now() - pay.start) / 1000 / PAY_DURATION);
-        const tp = pay.from + (6 - pay.from) * k;
-        t = Math.max(t, tp);
-        if (!pay.chimed && tp >= 5.25) {
-          pay.chimed = true;
-          chime();
+        const tr = Math.min(6, run.from + (performance.now() - run.start) / 1000 / RUN_STEP);
+        t = Math.max(t, tr);
+        const demo = demoStore.get();
+        if (tr >= 4 && demo.verification === "idle") demoStore.setVerification("checking");
+        if (tr >= 5 && demo.verification !== "verified") demoStore.setVerification("verified");
+        if (!run.chimed && tr >= 5.25) {
+          run.chimed = true;
+          if (demo.decision !== "frozen" && demo.card !== "frozen") chime();
         }
       }
     }
+    applyStates(t);
     if (columnRef.current) columnRef.current.dataset.paid = t >= 5.4 ? "true" : "false";
+    // decorative bento loops hold still while the bento is being handed to the device
+    decorGate.set(st.visible && st.pull > 0);
+    maybeSnapshot();
     const engine = engineRef.current;
     const wallet = walletRef.current;
     if (engine && st.visible) {
       // the combined status icon plays in over the last 22 % of the close (cover screen just lit)
       const intro = Math.min(1, Math.max(0, (st.fold - 0.78) / 0.22));
-      if (wallet && st.fold > 0.5 && wallet.draw(t, intro)) engine.refreshOuter();
+      if (wallet && st.fold > 0.5 && wallet.draw(t, intro, demoStore.get())) engine.refreshOuter();
       const glScreen = smoothstep(HANDOFF.glFrom, HANDOFF.glTo, st.pull);
       engine.set({ pull: st.pull, fold: st.fold, after: st.after });
       engine.setInnerScreenAlpha(glScreen);
@@ -151,7 +208,7 @@ export const FoldScene = forwardRef<FoldSceneHandle, Props>(function FoldScene({
       if (root) root.dataset.handoff = "dom";
       handoffRef.current?.(1, true);
     }
-  }, [processTime]);
+  }, [processTime, applyStates, maybeSnapshot]);
 
   const warmRef = useRef<() => void>(() => undefined);
   useImperativeHandle(ref, () => ({
@@ -164,17 +221,26 @@ export const FoldScene = forwardRef<FoldSceneHandle, Props>(function FoldScene({
     },
   }));
 
-  const onPay = useCallback(() => {
+  /** "Run security demo": plays the checkpoints from where the reader is (at least from the start)
+   *  to the result without more scrolling or clicks; the outcome follows the demo model */
+  const onRun = useCallback(() => {
     const t = processTime(stateRef.current.processPx);
-    payRef.current = { start: performance.now(), from: Math.max(3, Math.min(t, 5.9)), chimed: false };
-    // keep the play running even if the user stops scrolling
+    runRef.current = { start: performance.now(), from: Math.max(0, Math.min(t, 5.9)), chimed: false };
     const tick = () => {
       renderFrame();
-      const p = payRef.current;
-      if (p && performance.now() - p.start < PAY_DURATION * 1000 + 100) requestAnimationFrame(tick);
+      const r = runRef.current;
+      if (r && performance.now() - r.start < (6 - r.from) * RUN_STEP * 1000 + 150) requestAnimationFrame(tick);
     };
     requestAnimationFrame(tick);
   }, [processTime, renderFrame]);
+
+  const onReset = useCallback(() => {
+    runRef.current = null;
+    demoStore.resetAll();
+  }, []);
+
+  // demo changes made outside the scroll loop (column / bento buttons) still repaint the screens
+  useEffect(() => demoStore.subscribe(() => requestAnimationFrame(() => renderFrame())), [renderFrame]);
 
   useEffect(() => {
     sizeRef.current = { contentW, contentH };
@@ -199,9 +265,11 @@ export const FoldScene = forwardRef<FoldSceneHandle, Props>(function FoldScene({
         const outer = document.createElement("canvas");
         const wallet = new screens.WalletScreen(outer);
         // inner texture at the device-pixel size the bento is shown at (crisp text at the hand-off);
-        // DPR is 2 on Retina MacBooks, 1 / 1.25 / 1.5 on typical Windows displays
+        // DPR is 2 on Retina MacBooks, 1 / 1.25 / 1.5 on typical Windows displays. It is painted from
+        // the live bento DOM once that is on screen (maybeSnapshot); until then a blank dark frame.
         const res = Math.min(2.4, Math.max(1, (sizeRef.current.contentH * Math.min(window.devicePixelRatio, 2)) / 1125));
-        await Promise.all([screens.drawInnerScreen(inner, res), wallet.load()]);
+        await Promise.all([screens.drawInnerScreen(inner, res, null), wallet.load(demoStore.get())]);
+        innerRef.current = { canvas: inner, res, paint: screens.drawInnerScreen };
         if (cancelled) return;
         engine = new FoldEngine(host, inner, outer);
         const vp = viewportSize();
@@ -264,9 +332,9 @@ export const FoldScene = forwardRef<FoldSceneHandle, Props>(function FoldScene({
       <div className={styles.night} />
       <div className={styles.paper} />
       <div ref={hostRef} className={styles.canvas} aria-hidden />
-      <button type="button" className={styles.phoneHit} onClick={onPay} aria-label="Pay with Face ID" tabIndex={-1} />
-      <section className={styles.process} id="duo" aria-label="Apple Pay process">
-        <ProcessColumn ref={columnRef} onPay={onPay} />
+      <button type="button" className={styles.phoneHit} onClick={onRun} aria-label="Run the security demo on the phone" tabIndex={-1} />
+      <section className={styles.process} id="security-demo" aria-label="Carte security demo">
+        <ProcessColumn ref={columnRef} onRun={onRun} onReset={onReset} />
       </section>
       {status === "error" && process.env.NODE_ENV !== "production" ? (
         <p className={styles.devError} role="status">
