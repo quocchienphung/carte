@@ -1,0 +1,143 @@
+/* Plinth "What actually happens to a request." — computed styles from plinthdev.framer.website @1440 */
+.column {
+  --ink: rgb(26, 26, 23);
+  --muted: rgb(110, 108, 100);
+  --num: rgb(138, 133, 120);
+  --accent: rgb(30, 68, 229);
+  --line: rgb(228, 224, 215);
+  --ease: cubic-bezier(0.44, 0, 0.56, 1);
+  position: absolute;
+  left: 52%;
+  top: 0;
+  width: min(461px, 40vw);
+  font-family: var(--font-schibsted), "Schibsted Grotesk", sans-serif;
+  will-change: transform;
+}
+
+.eyebrow {
+  margin: 0;
+  font-family: var(--font-jetbrains), "JetBrains Mono", monospace;
+  font-size: 12px;
+  line-height: 16.8px;
+  letter-spacing: 0.84px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.heading {
+  margin: 15px 0 0;
+  font-size: 44px;
+  font-weight: 400;
+  line-height: 47.52px;
+  letter-spacing: -1.232px;
+  color: var(--ink);
+}
+
+.lede {
+  margin: 15px 0 0;
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: -0.16px;
+  color: var(--muted);
+}
+
+.steps {
+  margin: 56px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.step + .step {
+  margin-top: -1px; /* shared hairline between stacked cards */
+}
+
+.card {
+  position: relative;
+  box-sizing: border-box;
+  min-height: 156px;
+  padding: 22px 28px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0);
+  opacity: 0.34;
+  transition:
+    opacity 400ms var(--ease),
+    background-color 400ms var(--ease),
+    box-shadow 400ms var(--ease);
+}
+
+.num {
+  margin: 0;
+  font-family: var(--font-jetbrains), "JetBrains Mono", monospace;
+  font-size: 12px;
+  line-height: 19px;
+  letter-spacing: 0.84px;
+  color: var(--num);
+  transition: color 400ms var(--ease);
+}
+
+.title {
+  margin: 6px 0 0;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: -0.17px;
+  color: var(--ink);
+}
+
+.body {
+  margin: 6px 0 0;
+  font-size: 14.5px;
+  line-height: 22.5px;
+  color: var(--muted);
+}
+
+/* states (set from the scroll position: card top crosses 48 % of the viewport) */
+.step[data-state="passed"] .card {
+  opacity: 0.58;
+}
+
+.step[data-state="active"] .card {
+  opacity: 1;
+  background: rgb(255, 255, 255);
+  position: relative;
+  z-index: 1;
+}
+
+.step[data-state="active"] .num {
+  color: var(--accent);
+}
+
+/* the extra process control: pay from the page */
+.pay {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 34px;
+  margin-top: 14px;
+  padding: 0 16px 0 13px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  font: 500 13px/1 var(--font-schibsted), sans-serif;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  transition: background-color 200ms ease, transform 160ms ease;
+}
+
+.pay:hover {
+  background: var(--accent);
+}
+
+.pay:active {
+  transform: scale(0.97);
+}
+
+.pay:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.column[data-paid="true"] .pay {
+  background: rgb(52, 199, 89);
+}

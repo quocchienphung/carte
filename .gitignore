@@ -1,0 +1,7 @@
+node_modules
+
+# Apple iPhone Duo reference model (downloaded by scripts/assets/prepare_iphone_duo.py; Apple terms)
+/public/sites/roco-bank/iphone-duo/
+.venv-tools/
+.next/
+artifacts/visual-audit/*/compare/

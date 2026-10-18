@@ -1,0 +1,131 @@
+/* Bento scene — canvas px. Text tops derive from measured baselines with Albert Sans metrics
+   (ascent .95, descent .25, cap .70): line-height 1 ⇒ top = baseline − 0.85·F = capTop − 0.15·F. */
+
+.scene {
+  position: absolute;
+  left: var(--off-x, 0px);
+  top: var(--off-y, 0px);
+  width: 1440px;
+  height: 1024px;
+}
+
+.grid {
+  position: absolute;
+  inset: 0;
+  contain: layout;
+}
+
+.item {
+  display: contents;
+}
+
+.tile {
+  position: absolute;
+  display: block;
+  border-radius: var(--roco-tile-radius);
+  box-shadow: var(--roco-tile-shadow);
+  color: #fff;
+  text-decoration: none;
+  will-change: transform, width, height, left, top;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tile:focus-visible {
+  outline: 2px solid #f39a45;
+  outline-offset: 3px;
+}
+
+/* entrance scale origins (measured, §7.5) */
+.tile_credit { transform-origin: 50% 98%; }
+.tile_ai { transform-origin: 64.2% 50%; }
+.tile_trust,
+.tile_customers,
+.tile_easy,
+.tile_payment,
+.tile_invested { transform-origin: 50% 50%; }
+
+.mask {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  /* isolate so the rounded clip stays crisp under scale */
+  isolation: isolate;
+}
+
+.art {
+  position: absolute;
+  left: 0;
+  top: 0;
+  max-width: none;
+  user-select: none;
+  will-change: transform;
+}
+
+.dim {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  will-change: opacity;
+}
+
+.text {
+  position: absolute;
+  inset: 0;
+  font-family: var(--roco-font-sans);
+  pointer-events: none;
+  will-change: transform;
+}
+
+.line {
+  position: absolute;
+  left: 50px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* bento type renders heavier than the hero (white on art): ink-matched per line (tests/bento_text_ink.py) */
+.light { font-weight: 330; }
+.medium { font-weight: 500; }
+
+.k_eyebrow {
+  font-size: 14.29px;
+  font-weight: 400;
+  letter-spacing: 0.325em;
+  color: rgba(255, 255, 255, 0.96);
+}
+
+.k_title { letter-spacing: -0.045em; }
+.k_sub { letter-spacing: -0.035em; }
+
+/* ---- credit */
+.l_credit_0 { left: 53.6px; top: 67.8px; font-size: 47.86px; }
+.l_credit_1 { left: 53px; top: 120.4px; font-size: 33px; }
+/* ---- customers */
+.l_customers_0 { left: 50px; top: 52.9px; }
+.l_customers_1 { left: 50.6px; top: 170.2px; font-size: 48px; }
+.l_customers_2 { left: 50.4px; top: 231.3px; font-size: 31.4px; }
+/* ---- trust */
+.l_trust_0 { left: 50px; top: 53.5px; font-size: 13.6px; }
+.l_trust_1 { left: 50.4px; top: 91.3px; font-size: 31.4px; }
+.l_trust_2 { left: 49.5px; top: 126.3px; font-size: 31.4px; }
+/* ---- ai (centred, follows the tile width) */
+.l_ai_0 { left: 0; right: 0; top: 64.2px; text-align: center; font-size: 38.6px; }
+/* ---- easy */
+.l_easy_0 { left: 53px; top: 64.2px; font-size: 38.6px; }
+/* ---- payment */
+.l_payment_0 { left: 50px; top: 48.9px; }
+.l_payment_1 { left: 50.2px; top: 126.8px; font-size: 47.86px; }
+.l_payment_2 { left: 49px; top: 188.3px; font-size: 31.4px; }
+/* ---- invested */
+.l_invested_0 { left: 46px; top: 35.2px; font-size: 38.6px; color: rgba(255, 255, 255, 0.9); }
+.l_invested_1 { left: 47.2px; top: 83.2px; font-size: 38.6px; }
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

@@ -1,0 +1,381 @@
+/* Hero scene — canvas px measured on f085 (stage px − (80, 88)). Animated properties are written by
+   the replay applier; everything here is the rested geometry. */
+
+.scene {
+  position: absolute;
+  left: var(--off-x, 0px);
+  top: var(--off-y, 0px);
+  width: 1440px;
+  height: 1024px;
+  will-change: transform;
+}
+
+/* ---------------------------------------------------------------- decorative vertical type */
+.deco {
+  position: absolute;
+  left: 1367px; /* baseline (glyph bottoms) at stage x 1447 */
+  top: 0;
+  width: 0;
+  height: 1024px;
+  pointer-events: none;
+}
+
+.decoInner {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform-origin: 0 0;
+  transform: translate(0, 1065px) rotate(-90deg) translate(0, -0.78em);
+  font-family: var(--roco-font-sans);
+  font-size: 134px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.decoOutline {
+  color: transparent;
+  -webkit-text-stroke: 1.4px #ececec;
+}
+
+.decoSolid {
+  color: var(--roco-deco);
+}
+
+/* ---------------------------------------------------------------- arrows */
+.arrows {
+  position: absolute;
+  left: 92px;
+  top: 352px;
+  width: 40px;
+  height: 64px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.arrowUp,
+.arrowDown {
+  position: absolute;
+  display: block;
+  will-change: transform, opacity;
+}
+
+.arrowUp {
+  left: 4px;
+  top: 5px;
+  color: #c9c9c9;
+}
+
+.arrowDown {
+  left: 20px;
+  top: 42px;
+  color: #000;
+}
+
+.arrows:focus-visible {
+  outline: 2px solid #f39a45;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* ---------------------------------------------------------------- copy */
+.copy {
+  position: absolute;
+  left: 96px;
+  top: 0;
+}
+
+.eyebrow {
+  position: absolute;
+  left: 0;
+  top: 453.3px; /* cap top 459 (measured +4.3 from metrics) */
+  margin: 0;
+  white-space: nowrap;
+  font-family: var(--roco-font-sans);
+  font-size: var(--roco-eyebrow-size);
+  font-weight: 460;
+  letter-spacing: var(--roco-eyebrow-track);
+  line-height: 1.5;
+  color: #000;
+}
+
+.eyebrowChar {
+  display: inline-block;
+  will-change: opacity;
+}
+
+.headline {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 0;
+  font-family: var(--roco-font-sans);
+  font-size: var(--roco-display-size);
+  font-weight: var(--roco-weight-light);
+  letter-spacing: var(--roco-display-track);
+  line-height: 1;
+  white-space: nowrap;
+  color: #000;
+}
+
+.headLine {
+  position: absolute;
+  left: 0;
+  display: block;
+  will-change: transform;
+}
+
+/* line boxes are 1em tall; top = baseline − ascent */
+.headLine1 {
+  top: 499.36px; /* baseline 553 (canvas) − 0.85·F (Albert Sans ascent .95 / descent .25) */
+}
+
+.headLine2 {
+  top: 568.36px; /* baseline 622 */
+  left: -1.5px; /* "P" side bearing vs reference ink x 180 */
+}
+
+.wordSlot {
+  position: relative;
+  white-space: pre;
+}
+
+.word {
+  will-change: color, opacity;
+}
+
+.light {
+  font-weight: var(--roco-weight-light);
+}
+
+.medium {
+  font-weight: var(--roco-weight-medium);
+}
+
+.placeholder {
+  position: absolute;
+  left: 0;
+  top: 0.16em;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.paragraph {
+  position: absolute;
+  left: 0;
+  top: 656.2px; /* cap top 662: (24 − 1.2F)/2 + .95F − .7F */
+  width: 700px;
+  margin: 0;
+  font-family: var(--roco-font-sans);
+  font-size: var(--roco-body-size);
+  font-weight: 480;
+  letter-spacing: var(--roco-body-track);
+  line-height: 24px;
+}
+
+.paraLine {
+  position: absolute;
+  left: 0;
+  display: block;
+  white-space: nowrap;
+  will-change: transform, opacity, filter;
+}
+
+.paraLine:nth-child(1) {
+  letter-spacing: calc(var(--roco-body-track) + 0.0021em);
+}
+
+.paraLine:nth-child(2) {
+  top: 24px;
+  letter-spacing: calc(var(--roco-body-track) - 0.0081em);
+}
+
+.paraLine:nth-child(3) {
+  top: 48px;
+  letter-spacing: calc(var(--roco-body-track) - 0.0024em);
+}
+
+.paraLine:nth-child(4) {
+  top: 72px;
+}
+
+.ink {
+  color: #000;
+}
+
+.mid {
+  color: var(--roco-ink-mid);
+}
+
+.soft {
+  color: var(--roco-ink-soft);
+}
+
+/* ---------------------------------------------------------------- CTAs */
+.actions {
+  position: absolute;
+  left: 96px;
+  top: 788px;
+  display: flex;
+  gap: 8px;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 132px;
+  height: 32px;
+  border-radius: var(--roco-pill-radius);
+  font-family: var(--roco-font-sans);
+  font-size: 11.6px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-decoration: none;
+  will-change: transform, opacity, filter;
+  transition: background-color 160ms ease;
+}
+
+.cta_solid {
+  background: #000;
+  color: #fff;
+}
+
+.cta_soft {
+  background: var(--roco-cta-soft);
+  color: #000;
+}
+
+.cta_solid:hover {
+  background: #2a2a2a;
+}
+
+.cta_soft:hover {
+  background: #e3e3e3;
+}
+
+.cta:focus-visible {
+  outline: 2px solid #f39a45;
+  outline-offset: 3px;
+}
+
+/* ---------------------------------------------------------------- divider + partners */
+.divider {
+  position: absolute;
+  left: 96px;
+  top: 867px;
+  width: 752px;
+  height: 2px;
+  background: var(--roco-divider);
+  transform-origin: 0 50%;
+  will-change: transform;
+}
+
+.partners {
+  position: absolute;
+  left: -20px;
+  top: 902px;
+  width: 880px;
+  height: 50px;
+  color: var(--roco-partner);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 42%, #000 60%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 42%, #000 60%, transparent 100%);
+  will-change: opacity;
+}
+
+.partner {
+  position: absolute;
+  left: 20px; /* strip x −20 → slot coordinates are canvas px */
+  top: 0;
+  width: 147.5px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform;
+}
+
+/* ---------------------------------------------------------------- social proof pills */
+.proof {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  pointer-events: none;
+}
+
+.pill {
+  position: absolute;
+  height: 56px;
+  border-radius: var(--roco-pill-radius);
+  pointer-events: auto;
+  will-change: transform, opacity, filter;
+}
+
+.pill_walentyna { left: 1022px; top: 768px; width: 248px; }
+.pill_slawomira { left: 905px; top: 841px; width: 237px; }
+.pill_haleema { left: 1149px; top: 841px; width: 236px; }
+.pill_patrick { left: 946px; top: 913px; width: 220px; }
+.pill_brandon { left: 1172px; top: 913px; width: 172px; }
+
+.tone_neutral {
+  background: var(--roco-soft-pill);
+  color: var(--roco-ink-2);
+}
+
+.tone_orange {
+  background: linear-gradient(90deg, var(--roco-orange-a), var(--roco-orange-b));
+  color: #fff;
+}
+
+.tone_green {
+  background: linear-gradient(90deg, var(--roco-green-a), var(--roco-green-b));
+  color: #fff;
+}
+
+.avatar {
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.pillName {
+  position: absolute;
+  left: 60px;
+  top: 12px;
+  font-family: var(--roco-font-sans);
+  font-size: 16.1px;
+  font-weight: 440;
+  letter-spacing: 0.012em;
+  line-height: 18px;
+  white-space: nowrap;
+}
+
+.pillAmount {
+  position: absolute;
+  left: 60px;
+  top: 30.6px;
+  font-family: var(--roco-font-mono);
+  font-size: 12.64px; /* digit height 9 px (DM Mono 0.712 em) */
+  letter-spacing: -0.015em;
+  line-height: 14px;
+  white-space: nowrap;
+}
+
+.tone_neutral .pillAmount {
+  color: var(--roco-amount);
+}
+
+.tone_orange .pillAmount,
+.tone_green .pillAmount {
+  color: rgba(255, 255, 255, 0.86);
+}

@@ -1,0 +1,90 @@
+.viewport {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--roco-mat-top) 0%, var(--roco-mat-top) 35%, var(--roco-mat-bottom) 100%);
+}
+
+.stage {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1600px;
+  height: 1200px;
+  transform-origin: 50% 50%;
+  background: linear-gradient(180deg, var(--roco-mat-top) 0%, var(--roco-mat-top) 35%, var(--roco-mat-bottom) 100%);
+}
+
+.zoom {
+  position: absolute;
+  inset: 0;
+  transform-origin: 800px 600px;
+  will-change: transform;
+}
+
+.canvas {
+  position: absolute;
+  left: 80px;
+  top: 88px;
+  width: 1440px;
+  height: 1024px;
+  overflow: hidden;
+  border-radius: var(--roco-canvas-radius);
+  background: var(--roco-white);
+  z-index: var(--z-canvas);
+}
+
+.headerLayer {
+  position: absolute;
+  left: 80px;
+  top: 88px;
+  width: 1440px;
+  height: 1024px;
+  z-index: var(--z-header);
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------------- full-screen website frame */
+.fsViewport {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--roco-white);
+}
+
+.fsFrame {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform-origin: 0 0;
+}
+
+.fsZoom {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+
+.fsCanvas {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--roco-white);
+  z-index: var(--z-canvas);
+}
+
+.fsHeaderLayer {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-header);
+  pointer-events: none;
+}
+
+/* "packaging" hand-off: the scaled stage must not reveal the hero's white backgrounds at its edges */
+:global([data-handoff="dom"]) .fsViewport,
+:global([data-handoff="dom"]) .fsCanvas {
+  background: var(--roco-night);
+}

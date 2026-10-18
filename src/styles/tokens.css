@@ -1,0 +1,60 @@
+/* Roco.bank reconstruction — design tokens.
+   Every value is sampled or measured from the reference video (references/VIDEO_FORENSICS.md);
+   comments name the evidence. Canvas px == CSS px at the 1600×1200 reference capture. */
+
+:root {
+  /* ---- presentation stage */
+  --roco-mat-top: #f1f1f1; /* f085 (5,5) */
+  --roco-mat-bottom: #e4e4e4; /* f085 bottom: #e7e7e7 corners → #e1e1e1 centre */
+  --roco-canvas-radius: 4px; /* canvas corner AA ramp, 3–4 px */
+
+  /* ---- colour */
+  --roco-white: #ffffff; /* hero canvas */
+  --roco-ink: #000000; /* headline / CTA fill, min luminance 0 */
+  --roco-ink-2: #1d1d1d; /* pill names */
+  --roco-ink-mid: #555555; /* paragraph line 3 (darkest-1 % luma 73) */
+  --roco-ink-soft: #8a8a8a; /* paragraph line 4 (darkest-1 % luma 141) */
+  --roco-amount: #8c8c8c; /* mono amounts in neutral pills */
+  --roco-night: #111111; /* bento canvas (17,17,17) */
+  --roco-soft-pill: #f6f6f6; /* neutral pills (246) */
+  --roco-cta-soft: #efefef; /* DISCOVER (239) */
+  --roco-divider: #f5f5f5; /* f085 y=955 */
+  --roco-partner: #a3a3a3; /* darkest partner ink (163–171) */
+  --roco-deco: #f6f6f6; /* vertical "Personal + Business" */
+  --roco-orange-a: #fbab5c; /* Walentyna pill gradient start (251,171,92) */
+  --roco-orange-b: #f7b471;
+  --roco-green-a: #8fa872; /* Brandon pill gradient (~152,175,122) */
+  --roco-green-b: #a6bb8b;
+  --roco-wallet-border: #e2e2e2;
+  --roco-wallet-border-dark: #3a3a3a;
+
+  /* ---- type (Albert Sans chosen by glyph-correlation forensics; DM Mono approximates the amounts) */
+  --roco-font-sans: var(--font-albert), "Albert Sans", "Helvetica Neue", Arial, sans-serif;
+  --roco-font-mono: var(--font-dm-mono), "DM Mono", ui-monospace, monospace;
+  --roco-weight-light: 280; /* ink ratio app/ref 0.88 @250, 1.01 @290 */
+  --roco-weight-regular: 400;
+  --roco-weight-medium: 450;
+  --roco-display-size: 64.29px; /* cap height 45 px */
+  --roco-display-track: -0.0395em; /* ink width of line 2 = 596 px (measured) */
+  --roco-display-pitch: 69px; /* baseline 553 → 622 */
+  --roco-body-size: 17.71px; /* cap height 12.4 px */
+  --roco-body-track: -0.0187em; /* line 1 = 587 px */
+  --roco-body-pitch: 24px;
+  --roco-eyebrow-size: 14.2px; /* cap height 10 px */
+  --roco-eyebrow-track: 0.325em; /* "CREATE YOUR OWN" = 200 px */
+
+  /* ---- shape */
+  --roco-card-radius: 16px; /* ISO card corner 3.18 mm / 85.6 mm × 440 px */
+  --roco-tile-radius: 20px;
+  --roco-pill-radius: 999px;
+
+  /* ---- shadow (tuned against the rest frames) */
+  --roco-card-shadow: -18px 34px 54px rgba(0, 0, 0, 0.16), -4px 8px 16px rgba(0, 0, 0, 0.08);
+  --roco-tile-shadow: 0 14px 28px rgba(0, 0, 0, 0.35);
+
+  /* ---- layering (bottom → top) */
+  --z-canvas: 1;
+  --z-cards: 3;
+  --z-header: 5;
+  --z-controls: 50;
+}

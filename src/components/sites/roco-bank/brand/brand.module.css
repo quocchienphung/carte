@@ -1,0 +1,8 @@
+.wordmark {
+  font-family: var(--roco-font-sans);
+  font-size: 20.4px; /* ascender 15 px, ink width 97 px (f085) */
+  font-weight: 520;
+  letter-spacing: 0.016em;
+  line-height: 1;
+  white-space: nowrap;
+}

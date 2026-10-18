@@ -1,0 +1,83 @@
+.root {
+  --pull: 0;
+  --fold: 0;
+  --after: 0;
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  pointer-events: none;
+  /* the layer itself is on as soon as the pull starts; its parts fade individually (below) */
+  opacity: 1;
+  visibility: hidden;
+}
+
+.root[data-visible="true"] {
+  visibility: visible;
+}
+
+
+/* bento night → Plinth paper (#f0ede6 with a 22 px dot grid) as the device closes */
+.night {
+  position: absolute;
+  inset: 0;
+  background: #111111;
+  opacity: 1;
+}
+
+/* during the hand-off the DOM bento (glued to the screen) and its #111 surround are what you see */
+.root[data-handoff="dom"] .night {
+  opacity: 0;
+}
+
+.paper {
+  position: absolute;
+  inset: 0;
+  background-color: rgb(240, 237, 230);
+  background-image: radial-gradient(circle, rgb(218, 214, 204) 1.25px, transparent 1.6px);
+  background-size: 22px 22px;
+  background-position: 11px 11px;
+  /* only once the device is nearly shut, so the crossfade never reads as a muddy gray */
+  opacity: clamp(0, calc((var(--fold) - 0.86) * 7.2), 1);
+}
+
+.canvas {
+  position: absolute;
+  inset: 0;
+  /* the bezel appears around the bento as the zoom-out begins (no hard pop at the section edge) */
+  opacity: clamp(0, calc(var(--pull) * 8.4), 1);
+}
+
+.canvas canvas {
+  display: block;
+}
+
+/* invisible hit area over the closed device (it sits at ~29 % of the viewport width) */
+.phoneHit {
+  position: absolute;
+  left: calc(29% - 13vh);
+  top: 13vh;
+  width: 26vh;
+  height: 74vh;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 40px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.root[data-visible="true"][data-settled="true"] .phoneHit {
+  pointer-events: auto;
+}
+
+.process {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  opacity: clamp(0, calc(var(--after) * 2), 1);
+}
+
+.root[data-visible="true"][data-settled="true"] .process > * {
+  pointer-events: auto;
+}

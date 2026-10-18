@@ -1,0 +1,11 @@
+.dark {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--frame-w, 1440px);
+  height: var(--frame-h, 1024px);
+  background: var(--roco-night);
+  visibility: hidden;
+  transform: translate3d(0, 1024px, 0);
+  will-change: transform;
+}

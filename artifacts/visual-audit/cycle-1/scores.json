@@ -1,0 +1,99 @@
+[
+ {
+  "frame": 90,
+  "t": 3.0,
+  "whole": {
+   "ssim": 0.929,
+   "mad": 4.78,
+   "edge_f1": 0.9295
+  },
+  "regions": {
+   "header": {
+    "ssim": 0.9532,
+    "mad": 2.78,
+    "edge_f1": 0.8763
+   },
+   "hero_copy": {
+    "ssim": 0.787,
+    "mad": 14.37,
+    "edge_f1": 0.9748
+   },
+   "ctas": {
+    "ssim": 0.9127,
+    "mad": 4.37,
+    "edge_f1": 1.0
+   },
+   "cards": {
+    "ssim": 0.9195,
+    "mad": 5.69,
+    "edge_f1": 0.889
+   },
+   "pills": {
+    "ssim": 0.8375,
+    "mad": 7.65,
+    "edge_f1": 0.995
+   },
+   "logos": {
+    "ssim": 0.9184,
+    "mad": 1.85,
+    "edge_f1": 0.872
+   },
+   "deco": {
+    "ssim": 0.9178,
+    "mad": 2.77,
+    "edge_f1": 0.9691
+   }
+  }
+ },
+ {
+  "frame": 162,
+  "t": 5.4,
+  "whole": {
+   "ssim": 0.9525,
+   "mad": 3.26,
+   "edge_f1": 0.9639
+  },
+  "regions": {
+   "header": {
+    "ssim": 0.9696,
+    "mad": 1.8,
+    "edge_f1": 0.8684
+   },
+   "credit": {
+    "ssim": 0.9008,
+    "mad": 6.46,
+    "edge_f1": 0.9649
+   },
+   "trust": {
+    "ssim": 0.9565,
+    "mad": 4.19,
+    "edge_f1": 0.9841
+   },
+   "customers": {
+    "ssim": 0.9377,
+    "mad": 4.11,
+    "edge_f1": 0.9463
+   },
+   "ai": {
+    "ssim": 0.8923,
+    "mad": 7.48,
+    "edge_f1": 0.809
+   },
+   "easy": {
+    "ssim": 0.9049,
+    "mad": 7.85,
+    "edge_f1": 0.8671
+   },
+   "payment": {
+    "ssim": 0.9036,
+    "mad": 5.88,
+    "edge_f1": 0.9458
+   },
+   "invested": {
+    "ssim": 0.9395,
+    "mad": 4.76,
+    "edge_f1": 0.9849
+   }
+  }
+ }
+]

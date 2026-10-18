@@ -1,0 +1,283 @@
+/* Morphing navigation. Geometry = reference video px × 1.6 (video site 601 px wide).
+   closed bar 168×28 → 269×46 · open panel 263×301 → 421×482 · pill 44×25 → 70×40. */
+
+.root {
+  --bar-w: 269px;
+  --bar-h: 46px;
+  --panel-w: 421px;
+  --panel-h: 482px;
+  --ink: #f4f2ee;
+  --pad: 38px;
+  /* opening: width first, then a fast ease-out rise (fit to frames f014–f030) */
+  --ease-rise: cubic-bezier(0.22, 0.9, 0.24, 1);
+  --ease-grow: cubic-bezier(0.3, 0.7, 0.2, 1);
+  /* closing: content out fast, height falls (f151–f160), then width (f160–f164) */
+  --ease-fall: cubic-bezier(0.55, 0, 0.25, 1);
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  z-index: 60;
+  transform: translateX(-50%);
+  font-family: var(--roco-font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+.shell {
+  position: relative;
+  width: var(--bar-w);
+  height: var(--bar-h);
+  border-radius: 23px;
+  background: rgba(19, 18, 20, 0.97);
+  -webkit-backdrop-filter: blur(22px) saturate(1.15);
+  backdrop-filter: blur(22px) saturate(1.15);
+  box-shadow: 0 18px 50px -20px rgba(0, 0, 0, 0.55), inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  overflow: hidden;
+  transition:
+    height 380ms var(--ease-fall) 0ms,
+    width 260ms var(--ease-grow) 300ms,
+    border-radius 380ms var(--ease-fall) 0ms;
+}
+
+.root[data-state="open"] .shell {
+  width: var(--panel-w);
+  height: var(--panel-h);
+  border-radius: 20px;
+  transition:
+    width 300ms var(--ease-grow) 0ms,
+    height 560ms var(--ease-rise) 90ms,
+    border-radius 420ms var(--ease-rise) 90ms;
+}
+
+/* ---------------------------------------------------------------- pinned bottom row */
+.mark {
+  position: absolute;
+  left: 17px;
+  bottom: 14px;
+  display: block;
+  width: 26px;
+  height: 18px;
+  color: var(--ink);
+  border-radius: 6px;
+  transition: transform 220ms ease, opacity 220ms ease;
+}
+
+.mark:hover {
+  transform: rotate(-8deg) scale(1.06);
+}
+
+.toggle {
+  position: absolute;
+  right: 3px;
+  bottom: 3px;
+  width: 70px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 20px;
+  background: var(--ink);
+  color: #141414;
+  font: 500 15px/1 var(--roco-font-sans);
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  overflow: hidden;
+  transition: background-color 200ms ease, color 200ms ease, transform 160ms ease;
+}
+
+.toggle:hover {
+  background: #a29e99;
+}
+
+.toggle:active {
+  transform: scale(0.96);
+}
+
+.roll {
+  display: flex;
+  flex-direction: column;
+  height: 40px;
+}
+
+.roll > span {
+  flex: 0 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 420ms cubic-bezier(0.65, 0, 0.2, 1);
+}
+
+.root[data-state="open"] .roll > span {
+  transform: translateY(-40px);
+  transition-delay: 60ms;
+}
+
+.mark:focus-visible,
+.toggle:focus-visible,
+.item:focus-visible,
+.social:focus-visible {
+  outline: 2px solid #f39a45;
+  outline-offset: 3px;
+}
+
+/* ---------------------------------------------------------------- panel content */
+.panel {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--panel-w);
+  height: calc(var(--panel-h) - 60px);
+  padding: 44px var(--pad) 0;
+  pointer-events: none;
+}
+
+.root[data-state="open"] .panel {
+  pointer-events: auto;
+}
+
+.items,
+.socials {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.itemRow {
+  height: 45px;
+}
+
+.mask {
+  display: block;
+  overflow: hidden;
+  height: 48px;
+  margin-top: -3px;
+}
+
+.item {
+  display: inline-flex;
+  align-items: baseline;
+  height: 48px;
+  padding-top: 3px;
+  color: var(--ink);
+  font-size: 40px;
+  font-weight: 380;
+  letter-spacing: -0.035em;
+  line-height: 45px;
+  text-decoration: none;
+  transform: translateY(105%);
+  transition:
+    transform 160ms var(--ease-fall),
+    opacity 240ms ease;
+}
+
+.root[data-state="open"] .item {
+  transform: translateY(0);
+  transition:
+    transform 620ms cubic-bezier(0.2, 0.85, 0.25, 1) calc(330ms + var(--i) * 62ms),
+    opacity 240ms ease;
+}
+
+/* hover: dim the others, dash slides in before the hovered item */
+.root[data-hovering="true"] .item {
+  opacity: 0.32;
+}
+
+.root[data-hovering="true"] .item.itemActive {
+  opacity: 1;
+}
+
+.dash {
+  display: inline-block;
+  width: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition:
+    width 300ms cubic-bezier(0.3, 0.8, 0.2, 1),
+    opacity 220ms ease,
+    transform 300ms cubic-bezier(0.3, 0.8, 0.2, 1);
+}
+
+.itemActive .dash {
+  width: 0.9em;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.divider {
+  display: block;
+  width: calc(var(--panel-w) - 2 * var(--pad) - 24px);
+  height: 1px;
+  margin-top: 40px;
+  background: rgba(255, 255, 255, 0.14);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform 140ms ease;
+}
+
+.root[data-state="open"] .divider {
+  transform: scaleX(1);
+  transition: transform 700ms cubic-bezier(0.25, 0.8, 0.2, 1) 520ms;
+}
+
+.socials {
+  margin-top: 26px;
+}
+
+.socialRow {
+  overflow: hidden;
+  height: 22px;
+}
+
+.social {
+  display: inline-block;
+  color: rgba(244, 242, 238, 0.86);
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  line-height: 22px;
+  text-decoration: none;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 120ms ease, transform 160ms ease, color 200ms ease;
+}
+
+.root[data-state="open"] .social {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 400ms ease calc(600ms + var(--i) * 60ms),
+    transform 560ms cubic-bezier(0.2, 0.85, 0.25, 1) calc(600ms + var(--i) * 60ms),
+    color 200ms ease;
+}
+
+.social:hover {
+  color: #fff;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (max-width: 520px) {
+  .root {
+    --panel-w: calc(100vw - 32px);
+    --panel-h: 470px;
+    bottom: calc(16px + env(safe-area-inset-bottom));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shell,
+  .root[data-state="open"] .shell,
+  .item,
+  .root[data-state="open"] .item,
+  .roll > span,
+  .divider,
+  .social {
+    transition-duration: 1ms !important;
+    transition-delay: 0ms !important;
+  }
+}
